@@ -25,15 +25,45 @@
 <a class="cta" href="/join">Are you a Kiefer?</a>
 </div></header>
 <main id="main">
-<section class="article-hero dark"><div class="wrap"><span class="eyebrow">Shared by the family</span><h1>Family Album</h1><p class="lede" style="max-width:760px">Photographs, artwork, letters and hellos from Kiefer descendants. Want to add yours? <a href="/share">Share with the family →</a></p></div></section>
-<section class="section light"><div class="wrap"><div class="album" id="album"><p class="muted">The album is just getting started — be one of the first to <a href="/share">add something</a>.</p></div>
-<div class="narrow" style="margin-top:72px;padding:0"><h2>Leave a note for the family</h2>
-<div id="comments"></div>
-<form class="form panel" data-table="comments" style="margin-top:20px"><input type="hidden" name="page" value="album">
-<div><label for="cb">Your message</label><textarea id="cb" name="body" required></textarea></div>
-<div class="row"><div><label for="cn">Your name</label><input id="cn" name="name" type="text" required></div><div><label for="ce">Email (not shown)</label><input id="ce" name="email" type="email" required></div></div>
-<button class="btn solid" type="submit">Post (after Jim's review)</button><div class="msg"></div></form></div>
+<section class="article-hero dark" style="padding-bottom:48px"><div class="wrap"><span class="eyebrow">Shared by the family</span><h1>Family Album</h1><p class="lede" style="max-width:760px">Photographs, artwork, memories and hellos from Kiefer descendants.</p></div></section>
+<section class="light" style="padding:40px 0 0"><div class="narrow"><h2 style="font-size:34px;margin-bottom:6px">Add to the album</h2><p class="muted" style="font-size:16px;margin-bottom:18px">What would you like to share? Jim reviews everything before it appears.</p><div class="panel contrib collapsed">
+<div class="tabs" role="tablist">
+<button type="button" role="tab" aria-selected="false" data-kind="item">📷 A photo, document or artwork</button>
+<button type="button" role="tab" aria-selected="false" data-kind="story">✍️ A memory or story</button>
+<button type="button" role="tab" aria-selected="false" data-kind="hello">👋 Say hi to everyone</button>
+<button type="button" role="tab" aria-selected="false" data-kind="note">💬 Leave a note</button>
+</div>
+<form class="form" data-table="contributions" data-upload="1" data-kinds="item story hello">
+<input type="hidden" name="kind" value="item">
+<div data-show="item hello"><label for="sf">Your file</label><input id="sf" name="file" type="file" accept="image/*,video/*,application/pdf"><div class="hint" data-show="item">Photos, scans, PDFs or short videos — up to 50 MB.</div><div class="hint" data-show="hello">A photo or short video of you saying "Hi everyone!" — up to 50 MB.</div></div>
+<div data-show="item story"><label for="st">Title</label><input id="st" name="title" type="text" placeholder="e.g. Grandma Cora's wedding, 1916"></div>
+<div><label for="ss" data-label-item="The story behind it" data-label-hello="Your hello" data-label-story="Your memory or story">The story behind it</label><textarea id="ss" name="story" placeholder="Who, where, when — and why it matters."></textarea></div>
+<div class="row" data-show="item story"><div><label for="sp">Who's in it?</label><input id="sp" name="people" type="text"></div><div><label for="sy">About when?</label><input id="sy" name="year" type="text" placeholder="e.g. 1920s"></div></div>
+<div><label>Who can see it?</label><div class="vis">
+<label><input type="radio" name="visibility" value="public"> <b>Everyone</b>Shown in the public Family Album</label>
+<label><input type="radio" name="visibility" value="family" checked> <b>Family only</b>Only verified family members</label>
+<label><input type="radio" name="visibility" value="jim"> <b>Only Jim</b>For the archive, never shown</label>
+</div></div>
+<div class="row"><div><label for="sn">Your name</label><input id="sn" name="name" type="text" required></div><div><label for="se">Your email (never shown)</label><input id="se" name="email" type="email" required></div></div>
+<div><label for="sc">Credit it as (optional)</label><input id="sc" name="credit_name" type="text" placeholder="e.g. Courtesy of the Orr family"></div>
+<label class="check"><input type="checkbox" name="rights_ok" value="yes" required> This is mine to share, or I have the owner's permission</label>
+<button class="btn solid" type="submit">Send to Jim</button><div class="msg"></div>
+</form>
+<form class="form" data-table="comments" data-kinds="note" style="display:none"><input type="hidden" name="page" value="album">
+<div><label for="cb">Your note to the family</label><textarea id="cb" name="body" required placeholder="Say hello, share a memory, ask a question…"></textarea></div>
+<div class="row"><div><label for="cn">Your name</label><input id="cn" name="name" type="text" required></div><div><label for="ce">Your email (never shown)</label><input id="ce" name="email" type="email" required></div></div>
+<button class="btn solid" type="submit">Post (after Jim's review)</button><div class="msg"></div></form>
+</div></div></section>
+<section class="section light" style="padding-top:56px"><div class="wrap">
+<div class="album-head"><h2 style="margin:0">Photos &amp; memories</h2><div class="album-tools"><span class="muted" id="acount"></span><button class="btn solid" id="slideshow" type="button" hidden>▶ Slideshow</button></div></div>
+<div class="agrid" id="album"><p class="muted">The album is just getting started — be one of the first to add something above.</p></div>
+<div class="center" style="margin-top:28px"><button class="btn ghost on-paper" id="amore" type="button" hidden>Show more photos</button></div>
+<div class="narrow" style="margin-top:72px;padding:0"><h2 style="font-size:34px">Notes from the family</h2><div id="comments"><p class="muted">No notes yet — leave the first one above.</p></div><div class="center"><button class="btn ghost on-paper" id="cmore" type="button" hidden>Show more notes</button></div></div>
 </div></section>
+<div class="lb" id="lb" hidden aria-modal="true" role="dialog" aria-label="Photo viewer">
+<div class="lb-bar"><span id="lbpos"></span><div class="lb-ctrl"><button type="button" id="lbplay">▶ Play</button><label>Speed <select id="lbspeed"><option value="3000">Fast (3s)</option><option value="5000" selected>Normal (5s)</option><option value="8000">Slow (8s)</option><option value="12000">Very slow (12s)</option></select></label><button type="button" id="lbclose" aria-label="Close">✕</button></div></div>
+<button type="button" class="lb-nav prev" id="lbprev" aria-label="Previous">‹</button><div class="lb-stage" id="lbstage"></div><button type="button" class="lb-nav next" id="lbnext" aria-label="Next">›</button>
+<div class="lb-cap" id="lbcap"></div></div>
 </main>
 <footer><div class="wrap">
 <div class="cols">
