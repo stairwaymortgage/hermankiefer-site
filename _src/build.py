@@ -92,6 +92,14 @@ def page(path, title, desc, body, active='', ld=None, img='/img/roots-seven-gene
     open(fn, 'w').write(doc)
     return canon
 
+
+ROOTS = [("dr-herman","Dr. Herman Kiefer","1825 – 1911","3rd great-grandfather"),("arthur","Arthur Egmont Kiefer","1855 – 1932","2nd great-grandfather"),
+ ("herman-guy","Herman Guy Kiefer","1889 – 1936","Great-grandfather"),("marybeth","Mary Elizabeth (Marybeth) Kiefer Blackburn","1918 – 2007","Grandmother"),
+ ("james-herman","James Herman Blackburn","b. 1956","Father"),("jim","James Joseph Blackburn","b. 1979","Me"),("olivia","Olivia James Blackburn","b. 2019","Daughter")]
+def lineage(title="These are my roots", foot=""):
+    lis=''.join(f'<li class="{"me" if r=="Me" else ""}"><div class="face"><img src="/img/roots/{s}.jpg" alt="{E(n)}"></div><div><div class="nm">{E(n)}</div><div class="yr">{E(y)}</div><div class="rel">{E(r)}</div></div></li>' for s,n,y,r in ROOTS)
+    return f'<section class="lineage dark"><h2>{E(title)}</h2><div class="sub">Seven generations · Detroit, 1849 to today</div><ol>{lis}</ol>{foot}</section>'
+
 URLS = []
 def add(*a, **k): URLS.append(page(*a, **k))
 
@@ -155,14 +163,7 @@ home = f'''
  </div>
 </section>
 
-<section class="section dark">
- <div class="wrap">
-  <div class="split">
-   <div><span class="eyebrow">Seven generations</span><h2>These are my roots</h2><p class="lede">From the doctor who stepped off a ship in 1849 to a little girl born in 2019 — one unbroken line. Find yours.</p><div class="btns"><a class="btn solid" href="/tree">Explore the family tree</a><a class="btn ghost" href="/about">Meet Jim</a></div></div>
-   <img class="roots" src="/img/roots-seven-generations.jpg" alt="Seven generations from Dr. Herman Kiefer to Olivia James Blackburn">
-  </div>
- </div>
-</section>
+{lineage('These are my roots', '<div class="foot btns" style="justify-content:center"><a class="btn solid" href="/tree">Explore the family tree</a><a class="btn ghost" href="/about">Meet Jim</a></div>')}
 
 <section class="section light center">
  <div class="narrow">
@@ -385,9 +386,8 @@ album = '''<section class="article-hero dark"><div class="wrap"><span class="eye
 add('album', 'Kiefer Family Album — Photos, Art and Letters from the Family', 'Photographs, artwork, letters and messages shared by descendants of Dr. Herman Kiefer.', album, '/album')
 
 # ---------------- ABOUT ----------------
-about = '''<section class="article-hero dark"><div class="wrap split"><div><span class="eyebrow">Great-great-great-grandson of Dr. Herman Kiefer</span><h1>About Jim</h1><p class="lede">James Joseph Blackburn grew up hearing that the family was connected to "the Kiefer hospital" in Detroit. In 2026 he set out to find out how — and found a revolutionary, a Paris painter, a stubborn great-great-great-grandmother, and a family scattered across the world.</p><div class="btns"><a class="btn solid" href="#write">Write to Jim</a><a class="btn ghost" href="https://jamesjblackburn.com">JamesJBlackburn.com</a></div></div>
-<img class="roots" src="/img/roots-seven-generations.jpg" alt="Seven generations from Dr. Herman Kiefer to Olivia James Blackburn"></div></section>
-<section class="section light"><div class="narrow prose">
+about = lineage() + '''<section class="dark about-intro"><div class="narrow"><span class="eyebrow">Great-great-great-grandson of Dr. Herman Kiefer</span><h1>About Jim</h1><p class="lede">James Joseph Blackburn grew up hearing that the family was connected to "the Kiefer hospital" in Detroit. In 2026 he set out to find out how — and found a revolutionary, a Paris painter, a stubborn great-great-great-grandmother, and a family scattered across the world.</p><div class="btns"><a class="btn solid" href="#write">Write to Jim</a><a class="btn ghost" href="https://jamesjblackburn.com">JamesJBlackburn.com</a></div></div></section>
+<section class="section light"><div class="narrow prose nodrop">
 <h2>My line</h2>
 <p>Dr. Herman Kiefer → his son Arthur Egmont Kiefer → Arthur's son Herman Guy Kiefer, "Herman Kiefer II" → Herman Guy's daughter Mary Elizabeth "Marybeth" Kiefer Blackburn → her son James Herman Blackburn, my father → me → my daughter, Olivia.</p>
 <p>My father's middle name is Herman. For most of my life I didn't know why. Now I do.</p>
