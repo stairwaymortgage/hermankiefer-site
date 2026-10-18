@@ -54,3 +54,18 @@ insert into storage.buckets (id, name, public, file_size_limit) values ('album',
 create policy "anyone can upload" on storage.objects for insert to anon, authenticated with check (bucket_id = 'uploads');
 create policy "admin reads uploads" on storage.objects for select to authenticated using (bucket_id in ('uploads','album') and is_admin());
 create policy "admin writes album" on storage.objects for insert to authenticated with check (bucket_id = 'album' and is_admin());
+
+-- hardening (applied as migration harden_public_reads)
+create or replace function public.is_admin() returns boolean language sql stable security invoker set search_path = public as
+$$ select coalesce(auth.jwt() ->> 'email', '') = 'jjb161728@gmail.com' $$;
+revoke select on contributions from anon;
+grant select (id, created_at, kind, title, story, people, year, name, credit_name, file_path, file_type, status, visibility) on contributions to anon;
+create policy "public reads approved album items" on contributions for select to anon using (status = 'approved' and visibility = 'public');
+revoke select on comments from anon;
+grant select (id, created_at, page, name, body, status) on comments to anon;
+create policy "public reads approved comments" on comments for select to anon using (status = 'approved' and page not like '%private%');
+revoke all on members from anon; grant insert on members to anon;
+revoke all on tree_suggestions from anon; grant insert on tree_suggestions to anon;
+revoke update, delete on contributions from anon; revoke update, delete on comments from anon;
+alter view public_album set (security_invoker = true);
+alter view public_comments set (security_invoker = true);
