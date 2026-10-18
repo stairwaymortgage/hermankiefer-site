@@ -1,9 +1,12 @@
-# Kiefer: Do Right and Fear No One — Narration Scripts
+# Kiefer: Do Right and Fear No One — Narration Scripts (all 20 episodes)
 
 Read by Jim Blackburn. Each script is about 200–230 words (about 90 seconds at a relaxed pace).
 Paste one script at a time into HeyGen, generate the audio, and send the file to Claude. Name each file with its episode number, e.g. `EP01.mp3`.
 
 Pronunciation: Kiefer = KEE-fer · Sulzburg = SOOLTS-burg · Baden = BAH-den · Rastatt = RAH-shtaht · Étaples = ay-TAHP-luh · "Thue recht und scheue niemand" = TOO-eh REKHT oont SHOY-eh NEE-mahnt
+
+
+★ = the essential ten (the 15-minute cut). All twenty together make the 30-minute film.
 
 ---
 
@@ -48,6 +51,24 @@ Seventy-five years later, a copy turned up in a library in Fort Wayne, Indiana. 
 My name is Jim Blackburn. Dr. Herman Kiefer is my great-great-great-grandfather.
 
 And this is the next volume.
+
+---
+
+## EPISODE 2 — The Legend
+
+Every old family has a legend. Ours begins around 1650, with a Dutchman named Nicholas van Nidda.
+
+The way the family told it, Nicholas married the daughter of a German knight and took her family's name — von Kiefer. The family coat of arms showed a knight's helmet and a man raising his hand to swear an oath.
+
+From there, the Saga traces the line through the German state of Baden. A John Jacob Kiefer, who was mayor of the town of Durlach. A son said to have married a daughter of the ruling Margrave. A Joseph Kiefer who ran a mill in Karlsruhe.
+
+And then Dr. Ludwig Kiefer — a physician in Heidelberg, decorated with the Legion of Honor. The best story belongs to him. Napoleon, it's said, gave a gold snuff box to the ruler of Baden — who passed it on to his doctor. In 1951, Edgar Kiefer wrote that the snuff box was in his own hands.
+
+Is any of it true? I honestly don't know yet. We haven't found the records to prove it.
+
+But I'll tell you what I do know. Every family needs a legend.
+
+And if anyone out there knows where that snuff box is today — I would love to see it.
 
 ---
 
@@ -149,6 +170,100 @@ The man who fled one country for its ideals had found another worth fighting for
 
 ---
 
+## EPISODE 8 — The Doctor
+
+For sixty years, a big part of Detroit simply called him "the Doctor." And the family kept the stories.
+
+He believed in fresh air. Once, called to a stuffy sickroom where the windows had been painted shut, he kicked out the window sash. When a patient questioned his orders, he'd say, "Am I your doctor, or am I not?"
+
+A man came to him choking on a fishbone. The Doctor took out his knife, whittled a strip from a wooden barrel hoop, and cleared the man's throat with it.
+
+He carried the money he collected in his tall beaver hat. That was his cash box.
+
+When a patient complained he couldn't read the Doctor's handwriting, he answered, "I learned how to write. Now you learn how to read."
+
+And when an old woman everyone thought was dying looked up at him, he told her flatly, "You are going to live twenty years yet!"
+
+But he did more than treat patients. He served on Detroit's Board of Education. He sat on the committee that built up the city's first public library. He led the German-American school.
+
+He wasn't just a doctor in Detroit. He helped build it.
+
+---
+
+## EPISODE 9 — Consul and Regent
+
+In 1849, Herman Kiefer fled Germany as a wanted man.
+
+In 1883, he went back — as the official representative of the United States.
+
+He was appointed U.S. Consul at Stettin, a port city on the Baltic Sea. And while he was there, he studied how the Germans made sugar from beets. He sent home reports. The family credits those reports with helping to start Michigan's beet-sugar industry — an industry that still exists today.
+
+When he came home, the University of Michigan elected him a Regent — one of the people who run the university. He served for twelve years. He pushed for a four-year medical degree. For internships. For a new medical building, an engineering building, and a university hospital.
+
+In 1902, the university gave him an honorary medical degree.
+
+He also helped found the Detroit College of Medicine, and the Wayne County Savings Bank. And he served as president of the Michigan Cremation Society.
+
+The refugee who escaped with his diploma had become one of the most respected men in Michigan.
+
+His son Edwin painted his portrait — life-size — for the faculty room of the medical school he helped build.
+
+---
+
+## EPISODE 10 — Nine Children
+
+Herman and Frances Kiefer had nine children. And their names tell you exactly what the parents believed in.
+
+Their first, a daughter named Emila, died when she was five months old.
+
+Then came Alfred Kossuth — named for Lajos Kossuth, the hero of the Hungarian revolution. Richard Faust, and Arthur Egmont — both named from the works of Goethe. Then Oscar. Then Edwin Hans, named for Hans Christian Andersen. Then Edgar Siegfried. Then a daughter, Hermina. And finally, in 1867, the youngest — Guy Lincoln. Named for the president who had been killed two years before.
+
+Three of them — Emila, Richard and Oscar — died as children. They were buried in Detroit's Elmwood Cemetery.
+
+Six grew up. And those six went in six completely different directions.
+
+A mining engineer who fought eleven duels. An engineer who kept the family's papers. A painter who won a prize in Paris. A businessman who built the largest pigskin tannery in the world. A daughter who married her father's successor. And a doctor who gave a hospital his father's name.
+
+Their children, and their children's children, are the family I'm trying to bring back together.
+
+---
+
+## EPISODE 11 — Alfred
+
+The oldest son, Alfred, studied to be a mining engineer — at Columbia, and then at the famous mining academy in Freiberg, Germany. While he was in Germany, the family says, he fought eleven student duels.
+
+In 1879 he married Fanny Weber, the daughter of a Detroit furniture maker. And they headed west.
+
+Alfred worked a mine in Utah, at a place called West Jordan. Their first son, Edgar, was born there in 1880 — the same Edgar who would one day write *The Kiefer Saga.* Then they tried homesteading on the prairie in Nebraska.
+
+Eventually they came home to Detroit. Alfred worked his way up from bank teller to treasurer. And then he went into paper — starting a pulp mill at Port Huron in 1888, then timber companies and steamships on the Great Lakes.
+
+He built a house in Grosse Pointe and named it "Athelney."
+
+On the thirtieth of November, 1909, Alfred Kiefer fell from a Detroit streetcar and was killed. He was fifty-seven.
+
+His son Edgar became the family's historian. And Edgar's grandsons — born in China and Washington State — were, in 1951, the last three men to carry the Kiefer name.
+
+---
+
+## EPISODE 12 — Arthur, Keeper of the Papers
+
+Arthur Egmont Kiefer was my great-great-grandfather.
+
+He studied mechanical engineering at Heidelberg, came home, and ran the Detroit Edge Tool Works. For more than twenty years he was president of the Kiefer Land Company — the company that owned the Kiefer Building, on the corner his mother refused to sell.
+
+But Arthur's real gift to us was this: he kept the papers. His father's letters, his speeches, his records. Without Arthur, most of what we know about Dr. Herman Kiefer would be gone.
+
+His best friend was Alexander Ziwet, a mathematics professor at the University of Michigan. The family believed Ziwet was a grandson of Napoleon. And when Ziwet died, he left Arthur a pair of dueling pistols — marked with the letter N. Ziwet's ashes rest in the Kiefer family monument.
+
+In 1884, Arthur married Kate Baker, a German teacher. They had a daughter, Elsa. And then, on the twenty-fourth of April, 1889 — twins. Two boys. Carl, and Herman Guy.
+
+Herman Guy is my great-grandfather.
+
+Arthur kept the family's story safe for the next generation. In a way, that's what I'm trying to do too.
+
+---
+
 ## EPISODE 13 ★ — The Artist
 
 Of all of Herman Kiefer's children, only one was born outside Detroit. Edwin Hans Kiefer was born in Port Huron in 1860 — and he was named for Hans Christian Andersen.
@@ -166,6 +281,44 @@ Edwin painted the life-size portrait of his father that hung in the University o
 And in 1912, he married Marie Aubert. The woman in the painting.
 
 Today, nobody in the family knows where *The Letter* is. If you do — please, tell me.
+
+---
+
+## EPISODE 14 — The Tanner
+
+Edgar Siegfried Kiefer went to Vienna to learn a trade most people would never think of: tanning leather.
+
+In 1885, with a partner, he started the Edgar S. Kiefer Tanning Company in Grand Rapids. Later it moved to Chicago. And according to the family, it became the largest tanner of pigskin for shoes anywhere in the world. When the First World War came, the demand for leather made Edgar a rich man.
+
+In 1891 he married Minnie Kalkbrenner. They had two children — a daughter, Cora, and a son, Clay.
+
+Cora grew up, married, and raised a family whose children would spread from New England all the way to Sweden.
+
+Clay never got the chance. When he was nine years old, he was hit by a streetcar and killed.
+
+It's one of three streetcar deaths in this family. Clay, around 1903. His uncle Alfred, in 1909. And his cousin Carl, in Kansas City, in 1916.
+
+The streetcar was supposed to be the future — the thing that made a modern city work.
+
+For the Kiefers, it was something else.
+
+---
+
+## EPISODE 15 — Hermina
+
+Hermina Kiefer was the only daughter who lived to grow up.
+
+In 1885, she married Dr. Carl Bonning, a physician from Hesse, in Germany. And when her father began to step back from his medical practice, it was Carl Bonning who took it over. The Doctor's patients became his son-in-law's patients.
+
+Hermina and Carl had two daughters, and both of them went east to Wellesley College — at a time when very few women went to college at all.
+
+Their daughter Irma married an architect named Richard Marr. And it was Richard Marr who designed the Kiefer Building — the building that rose on the very corner Hermina's mother had refused to sell.
+
+When Dr. Herman Kiefer grew old — after he lost his wife, and his eldest son — he went to live with Hermina. He spent the last year of his life in her home. He died in October of 1911.
+
+Every family has someone who holds it together at the end.
+
+In ours, it was Hermina.
 
 ---
 
@@ -210,6 +363,46 @@ That same year, on the north side of Detroit, a new city hospital opened its doo
 Sixty-two years in America. Nine children. A city changed.
 
 And a name that outlived all of them.
+
+---
+
+## EPISODE 18 — The Twins
+
+On the twenty-fourth of April, 1889, Arthur and Kate Kiefer had twin boys. They named them Carl, and Herman Guy.
+
+Carl's life was short. On the twenty-first of April, 1916 — three days before his twenty-seventh birthday — he was killed in a streetcar accident in Kansas City. He had no children.
+
+Herman Guy went to the University of Michigan and became a metallurgical engineer — an expert in metals. He rose to become assistant to the president of the Timken Axle Company, at a time when Detroit was becoming the car capital of the world.
+
+In 1917 he married Florence Dumont Miller from Cincinnati. They had two daughters: Mary Elizabeth — Marybeth — in 1918. And Suzanne, in 1925.
+
+Herman Guy Kiefer died in Detroit in February of 1936. He was only forty-six. He's buried in Woodlawn Cemetery, under a stone that reads simply, "Herman Guy Kiefer, 1889 to 1936."
+
+In my family, we always called him Herman Kiefer the Second.
+
+He was my great-grandfather. And without him, I wouldn't be telling you this story.
+
+---
+
+## EPISODE 19 — Marybeth
+
+Mary Elizabeth Kiefer was born on the tenth of November, 1918. Everyone called her Marybeth.
+
+She graduated from Olivet College. And in 1942, in the middle of the Second World War, the Detroit papers announced her engagement. The headline read: "W. R. Blackburn To Wed July 11."
+
+On the eleventh of July, 1942, she married Walter Redding Blackburn. And that's how a Kiefer became a Blackburn.
+
+They raised four children — Nancy, Diane, Walter, and James. Marybeth taught third grade at Edison Elementary in Madison Heights for years. She passed away in 2007.
+
+She was my grandmother.
+
+And here's something I only understood after I started this project. Marybeth gave her youngest son a middle name from her own family. My father's name is James Herman Blackburn.
+
+Dr. Herman Kiefer. Herman Guy Kiefer. James Herman Blackburn. That name has been handed down for more than a hundred and thirty years.
+
+My father's middle name is Herman. For most of my life, I didn't know why.
+
+Now I do. And now my daughter, Olivia, will know too.
 
 ---
 
