@@ -69,7 +69,7 @@ def page(path, title, desc, body, active='', ld=None, img='/img/roots-seven-gene
 <a class="brand" href="/">Herman <b>Kiefer</b></a>
 <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
 <ul id="menu">{nav}</ul>
-<a class="cta" href="/join">Are you a Kiefer?</a>
+<a class="cta" href="/join">Are you a Kiefer relative?</a>
 </div></header>
 <main id="main">
 {body}
@@ -174,7 +174,7 @@ home = f'''
 
 <section class="section dark">
  <div class="wrap split">
-  <div><span class="eyebrow">Are you a Kiefer descendant?</span><h2>The blank pages are yours.</h2>
+  <div><span class="eyebrow">Are you a Kiefer relative? Whatever your last name is</span><h2>The blank pages are yours.</h2>
   <p class="lede">Bajis, Bayliss, Blackburn, Bonning, Danziger, Gilbert, Heym, Jones, Kiefer, Lawrie, Marr, Nilsson, Orr, Owen, Parker — if one of these names is in your family, you belong here.</p>
   <div class="btns"><a class="btn solid" href="/join">Join the family</a><a class="btn ghost" href="/share">Share a photo, letter or painting</a></div></div>
   <div class="photo-strip">{''.join(f'<img src="/img/{p}" alt="">' for p in strip_imgs)}</div>
@@ -335,7 +335,7 @@ add('mysteries', 'Kiefer Family Mysteries — Open Genealogy Questions', 'Unsolv
 # ---------------- JOIN / SHARE / ALBUM ----------------
 BRANCHES = ["Alfred (Kiefer, Bajis, Gilbert…)", "Arthur (Danziger, Parker, Blackburn, Heym…)", "Edwin (the artist)", "Edgar S. (Orr, Nilsson, Jones…)", "Hermina (Bonning, Marr…)", "Guy L. (Bayliss, Lawrie, Owen…)", "Married into the family", "Not sure yet", "Not family — just interested"]
 opts = ''.join(f'<option>{E(b)}</option>' for b in BRANCHES)
-join = f'''<section class="article-hero dark"><div class="wrap"><span class="eyebrow">Are you a Kiefer descendant?</span><h1>Join the family</h1><p class="lede" style="max-width:760px">Tell us who you are and how you're connected. Jim will reach out personally. Nothing you share is published unless you say so.</p></div></section>
+join = f'''<section class="article-hero dark"><div class="wrap"><span class="eyebrow">Are you a Kiefer relative?</span><h1>Join the family</h1><p class="lede" style="max-width:760px">Tell us who you are and how you're connected. Jim will reach out personally. Nothing you share is published unless you say so.</p></div></section>
 <section class="section light"><div class="narrow"><div class="panel">
 <form class="form" data-table="members">
 <div class="row"><div><label for="jn">Your name</label><input id="jn" name="name" type="text" required autocomplete="name"></div><div><label for="jr">Your relation</label><input id="jr" name="relation" type="text" placeholder="e.g. great-granddaughter of Cora Orr"></div></div>
