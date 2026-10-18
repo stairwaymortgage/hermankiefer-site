@@ -442,7 +442,7 @@ add('privacy', 'Privacy — HermanKiefer.com', 'How HermanKiefer.com protects li
 
 admin = '''<section class="article-hero dark"><div class="wrap"><h1>Review queue</h1><p class="lede">For Jim only.</p></div></section>
 <section class="section light" style="padding-top:20px"><div class="wrap" id="admin">
-<form class="form panel" id="login" style="max-width:520px"><label for="ae2">Email</label><input id="ae2" type="email" required><button class="btn solid" type="submit">Email me a sign-in link</button><div class="msg"></div></form>
+<form class="form panel" id="login" style="max-width:520px"><div><label for="ae2">Email</label><input id="ae2" type="email" required autocomplete="username"></div><div><label for="ap2">Password</label><input id="ap2" type="password" autocomplete="current-password"><div class="hint">No password yet? Leave it blank and we'll email you a sign-in link. Once you're in, you can set a password.</div></div><button class="btn solid" type="submit">Sign in</button><div class="msg"></div></form>
 </div></section>'''
 page('admin', 'Admin — HermanKiefer.com', 'Admin', admin, extra_js='<script src="/assets/admin.js?v=' + TODAY + '" defer></script>')
 page('404', 'Page not found — HermanKiefer.com', 'Not found', '<section class="section dark center" style="min-height:60vh"><div class="narrow"><h1>Lost in the archive</h1><p class="lede">That page isn\'t here. Try <a href="/story">the story</a> or <a href="/tree">the family tree</a>.</p></div></section>')

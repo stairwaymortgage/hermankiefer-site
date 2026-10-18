@@ -4,12 +4,16 @@
   function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML}
   window.HKclient(function(c){
     var lf=document.getElementById('login');
-    lf.addEventListener('submit',function(e){e.preventDefault(); c.auth.signInWithOtp({email:lf.querySelector('input').value,options:{emailRedirectTo:location.origin+'/admin'}}).then(function(r){var m=lf.querySelector('.msg');m.className='msg '+(r.error?'err':'ok');m.textContent=r.error?r.error.message:'Check your email for the sign-in link.'})});
+    lf.addEventListener('submit',function(e){e.preventDefault(); var em=document.getElementById('ae2').value.trim(), pw=document.getElementById('ap2').value, m=lf.querySelector('.msg');
+      if(pw){ c.auth.signInWithPassword({email:em,password:pw}).then(function(r){ if(r.error){m.className='msg err';m.textContent='That email and password didn\'t match. Leave the password blank to get an email link instead.';} }); }
+      else { c.auth.signInWithOtp({email:em,options:{emailRedirectTo:location.origin+'/admin'}}).then(function(r){m.className='msg '+(r.error?'err':'ok');m.textContent=r.error?r.error.message:'Check your email for the sign-in link.'}); } });
     c.auth.getSession().then(function(s){ if(s.data.session) load(); });
     c.auth.onAuthStateChange(function(ev,s){ if(s&&ev==='SIGNED_IN')load(); });
     function section(t){var h=document.createElement('h2');h.textContent=t;h.style.marginTop='40px';root.appendChild(h);var d=document.createElement('div');root.appendChild(d);return d;}
     function load(){
-      root.innerHTML='<p><button class="btn ghost on-paper" id="so">Sign out</button></p>';
+      root.innerHTML='<p style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn ghost on-paper" id="so">Sign out</button><button class="btn ghost on-paper" id="sp">Set / change my password</button></p><form id="pwf" class="form panel" style="display:none;max-width:520px"><label for="np">New password (at least 8 characters)</label><input id="np" type="password" minlength="8" autocomplete="new-password" required><button class="btn solid" type="submit">Save password</button><div class="msg"></div></form>';
+      document.getElementById('sp').onclick=function(){var f=document.getElementById('pwf');f.style.display=f.style.display==='none'?'grid':'none'};
+      document.getElementById('pwf').addEventListener('submit',function(e){e.preventDefault();var f=e.target,m=f.querySelector('.msg');c.auth.updateUser({password:document.getElementById('np').value}).then(function(r){m.className='msg '+(r.error?'err':'ok');m.textContent=r.error?r.error.message:'Saved. Next time just sign in with your email and this password.';if(!r.error)f.reset();})});
       document.getElementById('so').onclick=function(){c.auth.signOut().then(function(){location.reload()})};
       var q=section('Shared items waiting for review');
       c.from('contributions').select('*').eq('status','pending').order('created_at').then(function(r){

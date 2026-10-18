@@ -27,7 +27,7 @@ alter table comments enable row level security;
 alter table tree_suggestions enable row level security;
 
 create or replace function is_admin() returns boolean language sql stable security definer set search_path = public as
-$$ select coalesce(auth.jwt() ->> 'email', '') = 'jjb161728@gmail.com' $$;
+$$ select lower(coalesce(auth.jwt() ->> 'email', '')) in ('jjb161728@gmail.com','jimb@stairwaymortgage.com') $$;
 
 -- public may insert, but only in the pending state
 create policy "anyone can join" on members for insert to anon, authenticated with check (true);
@@ -57,7 +57,7 @@ create policy "admin writes album" on storage.objects for insert to authenticate
 
 -- hardening (applied as migration harden_public_reads)
 create or replace function public.is_admin() returns boolean language sql stable security invoker set search_path = public as
-$$ select coalesce(auth.jwt() ->> 'email', '') = 'jjb161728@gmail.com' $$;
+$$ select lower(coalesce(auth.jwt() ->> 'email', '')) in ('jjb161728@gmail.com','jimb@stairwaymortgage.com') $$;
 revoke select on contributions from anon;
 grant select (id, created_at, kind, title, story, people, year, name, credit_name, file_path, file_type, status, visibility) on contributions to anon;
 create policy "public reads approved album items" on contributions for select to anon using (status = 'approved' and visibility = 'public');
