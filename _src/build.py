@@ -128,6 +128,11 @@ home = f'''
  <div class="portrait"><img src="/img/history/regent-kiefer.jpg" alt="Portrait of Dr. Herman Kiefer as a University of Michigan Regent"><span class="cap">Dr. Herman Kiefer, Regent of the University of Michigan</span></div>
 </section>
 
+<section class="motto-band"><div class="wrap center">
+ <p class="motto-de">Thue recht und scheue niemand.</p>
+ <p class="motto-en">“Do right and fear no one.”</p>
+ <p class="motto-by">The Kiefer family motto · from the family coat of arms</p>
+</div></section>
 <section class="section dark" style="padding-top:20px">
  <div class="wrap">
   <div class="trailer" style="background-image:url(/img/history/rastatt-battle-1849.jpg)" data-trailer>

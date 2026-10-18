@@ -309,3 +309,9 @@ footer .base{border-top:1px solid #2a2119;margin-top:40px;padding-top:20px;displ
 .lb-cap small{font-family:var(--sans);font-size:12.5px;color:var(--gold)}
 @media (max-width:640px){.lb-stage{padding:0 6px}.lb-nav{width:40px;height:64px;font-size:36px;background:rgba(0,0,0,.5)}}
 .tile{min-width:0}
+
+/* family motto */
+.motto-band{background:var(--ink);border-top:1px solid rgba(201,168,106,.25);border-bottom:1px solid rgba(201,168,106,.25);padding:clamp(64px,10vw,140px) 0}
+.motto-band .motto-de{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.4vw,30px);color:var(--gold);margin:0 0 18px;letter-spacing:.02em}
+.motto-band .motto-en{font-family:var(--serif);font-weight:500;font-size:clamp(48px,9vw,128px);line-height:1.02;color:var(--on-ink);margin:0;text-wrap:balance}
+.motto-band .motto-by{font-family:var(--sans);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--on-ink-muted);margin:28px 0 0}
