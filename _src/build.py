@@ -117,7 +117,7 @@ CHILDREN = [
  ("arthur", "Arthur Egmont", "1855–1932", "The keeper", "saga/arthur-e-kiefer.jpg", "Engineer who saved his father's papers — and inherited Napoleon's dueling pistols."),
  ("the-artist", "Edwin Hans", "1860–1931", "The artist", "saga/edwin-h-kiefer-the-artist.jpg", "Won a prize at the 1890 Paris Salon, then married the woman in the painting."),
  ("the-tanner", "Edgar Siegfried", "1862–1927", "The tanner", "saga/edgar-s-kiefer.jpg", "Built the world's largest pigskin tannery, in Grand Rapids and Chicago."),
- ("hermina", "Hermina Cora", "1864–1938", "The daughter", "saga/dr-carl-bonning.jpg", "Married her father's successor; the old doctor spent his last year in her home."),
+ ("hermina", "Hermina Cora", "1864–1938", "The daughter", "saga/hermina-kiefer-bonning.jpg", "Married her father's successor; the old doctor spent his last year in her home."),
  ("the-name-on-the-hospital", "Guy Lincoln", "1867–1930", "The health officer", "saga/dr-guy-l-kiefer.jpg", "Built Detroit's health department and named its hospital for his father."),
 ]
 kids = ''.join(f'''<a class="card" href="/story/{s}"><div class="ph"><img src="/img/{im}" alt="{E(n)} Kiefer" loading="lazy"></div><div class="bd"><div class="k">{E(r)} · {y}</div><h3>{E(n)}</h3><p>{E(t)}</p></div></a>''' for s, n, y, r, im, t in CHILDREN)
@@ -227,6 +227,40 @@ for i, c in enumerate(CHAPTERS):
               {"@type": "ListItem", "position": 2, "name": "The Story", "item": SITE + "/story"},
               {"@type": "ListItem", "position": 3, "name": c['title'], "item": f"{SITE}/story/{c['slug']}"}]}]
     add(f"story/{c['slug']}", f"{c['title']} — Chapter {i+1} | The Herman Kiefer Story", f"{c['teaser']} {strip(c['body'])[:120]}…", body, '/story', ld, '/img/' + c['img'])
+
+
+# ---------------- RICHARD H. MARR ----------------
+MARR = json.load(open(os.path.join(os.path.dirname(__file__), 'marr_buildings.json')))
+def _area(r):
+    n = (r['note'] or '')
+    for k in ('Palmer Woods', 'Indian Village', 'Boston–Edison', 'Sherwood Forest', 'Rosedale Park', 'New Center'):
+        if k in n: return k
+    return r['city']
+_rows = ''.join(f'<tr><td class="num">{r["n"]}</td><td><b>{E(r["name"])}</b><div class="muted" style="font-size:14px">{E(r["note"] or "")}</div></td><td>{E(r["addr"])}<div class="muted" style="font-size:14px">{E(_area(r))}{"" if _area(r) == r["city"] else ", " + E(r["city"])}</div></td><td>{E(r["type"])}</td><td>{"<span class=\"tag ok\">Documented</span>" if r["ev"].startswith("Documented") else "<span class=\"tag rep\">Reported</span>"}{(" <a href=\"" + E(r["url"]) + "\" rel=\"noopener\" target=\"_blank\">source</a>") if r["url"] else ""}{(" · <a href=\"" + E(r["photo_page"]) + "\" rel=\"noopener\" target=\"_blank\">photo</a>") if r.get("photo_page") else ""}</td></tr>' for r in MARR)
+_gal = ''.join(f'<figure class="figure" style="margin:0"><img src="/img/{r["img"]}" alt="{E(r["name"])}, {E(r["addr"])}" loading="lazy"><figcaption><b>{r["n"]}. {E(r["name"])}</b>, {E(r["addr"])}. Photo: {E(r["photo_credit"])}.</figcaption></figure>' for r in MARR if r.get("img"))
+_docd = sum(1 for r in MARR if r['ev'].startswith('Documented'))
+marr_body = f"""<section class="article-hero dark"><div class="narrow"><span class="eyebrow">The family’s architect · 1886 – 1946</span><h1>Richard H. Marr</h1><div class="kicker">Architect of the Kiefer Building, Palmer Woods mansions and more than fifty Michigan buildings</div></div></section>
+<section class="section" style="padding-top:48px"><div class="narrow">
+<figure class="figure" id="top"><img src="/img/history/kiefer-building-1911.jpg" alt="Drawing of the Kiefer Building, Gratiot Avenue, Detroit, 1911"><figcaption>The Kiefer Building at Library and Gratiot, as the Detroit Journal pictured it in February 1911. Marr designed it on the corner Frances Kiefer refused to sell.</figcaption></figure>
+<div class="prose">
+<p>Richard Henderson Marr was born in Detroit on 24 August 1886. On 29 March 1911 he married <b>Irma Rose Bonning</b>, the daughter of <a href="/story/hermina">Hermina Kiefer Bonning</a> and the granddaughter of Dr. Herman Kiefer. That made him the old doctor’s grandson-in-law — and the family’s architect.</p>
+<p>According to his grandson David Bonning Marr, Richard came home from Boston in 1910 to design the <b>Kiefer Building</b> on Gratiot Avenue, the building that rose on the corner Frances Kiefer had refused to sell (<a href="/story/the-stubborn-wife">Chapter 6</a>). It was leased to the Crowley, Milner &amp; Co. department store and stood until 1977–78.</p>
+<p>Over the next thirty-five years Marr designed mansions for the Fisher brothers of Fisher Body in Palmer Woods and Boston–Edison, homes across Indian Village, Sherwood Forest, Grosse Pointe Park and Bloomfield, the Palmer Park Boulevard apartments, and the R. L. Polk Directory Building. He kept his office in the Architects Building on Brainard Street. He died in Detroit on 23 April 1946.</p>
+<p>Richard and Irma had two children, Carl Bonning Marr, who also trained as an architect at the University of Michigan, and Margaret Elizabeth Marr. Their grandson <b>David Bonning Marr</b> (1947–2024) kept the family’s archive of Marr’s drawings and photographs and shared much of this history before his death.</p>
+</div>
+<div class="note"><b>A note on the family tree.</b>Richard married into the family; his children and grandchildren are Dr. Herman Kiefer’s descendants through Hermina. <a href="/tree">See the family tree →</a></div>
+</div></section>
+<section class="section" style="padding-top:8px"><div class="wrap">
+<h2>Buildings by Richard H. Marr</h2>
+<div class="grid g2" style="margin:24px 0 40px">{_gal}</div>
+<p class="lede">{len(MARR)} buildings and projects, all in Michigan. <b>{_docd}</b> are documented in published sources; the rest are reported and still need original plans or permits to confirm. This is a working list. Follow the “photo” links to see each building. If you know of a Marr building, or have photographs from the Marr family archive, <a href="/share">share them with us</a>.</p>
+<div class="tablewrap"><table class="btable"><thead><tr><th>#</th><th>Building</th><th>Address</th><th>Type</th><th>Evidence</th></tr></thead><tbody>{_rows}</tbody></table></div>
+<p class="muted" style="font-size:14px;margin-top:16px">Many of these are private homes. Please enjoy them from the street. Entry 53 is a renovation: Albert Kahn designed the Detroit Athletic Club; Marr modernized its interiors around 1945–46. Research by the family, from Historic Detroit, the City of Detroit’s historic district reports, the Palmer Woods, Sherwood Forest and Boston–Edison associations, the Grosse Pointe Historical Society and the Michigan Society of Architects Bulletin.</p>
+</div></section>"""
+marr_ld = [{"@context": "https://schema.org", "@type": "Person", "name": "Richard Henderson Marr", "birthDate": "1886-08-24", "deathDate": "1946-04-23",
+            "birthPlace": "Detroit, Michigan", "jobTitle": "Architect", "spouse": {"@type": "Person", "name": "Irma Rose Bonning Marr"},
+            "url": SITE + "/richard-marr"}]
+add('richard-marr', 'Richard H. Marr, Detroit Architect (1886–1946): The Kiefer Building and 53 Buildings', 'Richard H. Marr designed the Kiefer Building, Fisher mansions in Palmer Woods and more than fifty Michigan buildings. He married Dr. Herman Kiefer\'s granddaughter Irma Bonning. Full list with addresses.', marr_body, '/story', marr_ld, '/img/history/kiefer-building-1911.jpg')
 
 # ---------------- WATCH ----------------
 watch = f'''<section class="article-hero dark"><div class="wrap"><span class="eyebrow">The documentary</span><h1>Watch</h1><p class="lede" style="max-width:760px"><em>Kiefer: Do Right and Fear No One</em> — written, produced and narrated by James Joseph Blackburn, Dr. Kiefer's great-great-great-grandson. Twenty short episodes in one 21-minute film.</p></div></section>

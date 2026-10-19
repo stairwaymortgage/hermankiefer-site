@@ -213,13 +213,13 @@ It is one of three streetcar deaths in this family. Clay's uncle Alfred fell fro
  sources="The Kiefer Saga (1951), ch. XI and Genealogy."),
 
 dict(slug="hermina", star=False, title="Hermina", years="1864 – 1938",
- img="saga/dr-carl-bonning.jpg", cap="Dr. Carl Bonning, Hermina's husband and Dr. Kiefer's successor in practice. Plate from the Saga, 1951.",
+ img="saga/hermina-kiefer-bonning.jpg", cap="Hermina Kiefer Bonning (Fig. 28 in the Saga, 1951).",
  teaser="The daughter who married her father's successor.",
  body="""Hermina Cora Kiefer, the only daughter to grow up, married Dr. Carl Bonning on 26 December 1885. Bonning, born in Felsberg, Hesse, took over Dr. Kiefer's medical practice.
 
 It was in Hermina's home that her father spent the last year of his life.
 
-The Bonnings had two daughters, both educated at Wellesley. Irma married Richard H. Marr — the architect of the Kiefer Building — and Hertha remained close to the family. The Marr grandchildren are among the relatives we hope to find.""",
+The Bonnings had two daughters, both educated at Wellesley. Irma married Richard H. Marr — the architect of the Kiefer Building and more than fifty other Michigan buildings ([see his work](/richard-marr)) — and Hertha remained close to the family. The Marr grandchildren are among the relatives we hope to find.""",
  sources="The Kiefer Saga (1951), ch. XI and Genealogy."),
 
 dict(slug="the-name-on-the-hospital", star=True, title="The Name on the Hospital", years="1867 – 1930",

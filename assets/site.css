@@ -315,3 +315,10 @@ footer .base{border-top:1px solid #2a2119;margin-top:40px;padding-top:20px;displ
 .motto-band .motto-de{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.4vw,30px);color:var(--gold);margin:0 0 18px;letter-spacing:.02em}
 .motto-band .motto-en{font-family:var(--serif);font-weight:500;font-size:clamp(48px,9vw,128px);line-height:1.02;color:var(--on-ink);margin:0;text-wrap:balance}
 .motto-band .motto-by{font-family:var(--sans);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--on-ink-muted);margin:28px 0 0}
+.tablewrap{overflow-x:auto;margin-top:24px;border:1px solid var(--rule,#e2d8c7)}
+.btable{width:100%;border-collapse:collapse;font-size:15.5px;min-width:760px}
+.btable th{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-align:left;padding:12px 14px;border-bottom:2px solid currentColor;opacity:.8}
+.btable td{padding:12px 14px;border-bottom:1px solid rgba(0,0,0,.08);vertical-align:top}
+.btable td.num{font-family:var(--sans);opacity:.6;width:36px}
+.tag{display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:.04em;padding:2px 8px;border-radius:3px;white-space:nowrap}
+.tag.ok{background:#e3efe2;color:#2f6b3a}.tag.rep{background:#f6e7cf;color:#7a4b12}
