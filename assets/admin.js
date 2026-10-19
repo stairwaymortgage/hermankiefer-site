@@ -49,6 +49,14 @@
           d.querySelector('.ok').onclick=function(){c.from('tree_suggestions').update({status:'done'}).eq('id',x.id).then(function(){d.remove()})};
           ts.appendChild(d);});
       });
+      var rb=section('Reunion registrations');
+      c.from('reunion').select('*').order('created_at',{ascending:false}).limit(1000).then(function(r){
+        if(!r.data||!r.data.length){rb.innerHTML='<p class="muted">No one yet.</p>';return;}
+        var n=0;r.data.forEach(function(m){n+=parseInt(m.party_size)||1});
+        var t='<p><b>'+r.data.length+'</b> registrations · about <b>'+n+'</b> people</p><table style="width:100%;font-family:var(--sans);font-size:14px;border-collapse:collapse"><tr><th align=left>Name</th><th align=left>Branch / connection</th><th align=left>Contact</th><th align=left>Party · interest · timing</th><th align=left>Notes</th></tr>';
+        r.data.forEach(function(m){t+='<tr style="border-top:1px solid #ddd"><td>'+esc(m.name)+'<br><span class=muted>'+esc(m.city)+'</span></td><td>'+esc(m.branch)+'<br>'+esc(m.relation)+'</td><td>'+esc(m.email)+'<br>'+esc(m.phone)+'</td><td>'+esc(m.party_size)+' · '+esc(m.interest)+'<br>'+esc(m.timing)+(m.help_ok?'<br><b>wants to help</b>':'')+(m.speak_ok?'<br><b>has something to share</b>':'')+'</td><td>'+esc(m.notes)+'</td></tr>'});
+        rb.innerHTML=t+'</table>';
+      });
       var mb=section('Family members who joined');
       c.from('members').select('*').order('created_at',{ascending:false}).limit(500).then(function(r){
         if(!r.data||!r.data.length){mb.innerHTML='<p class="muted">No one yet.</p>';return;}

@@ -35,7 +35,7 @@ def md(text):
 def strip(s): return re.sub(r'[*>]', '', s)
 
 NAV = [('/story', 'The Story'), ('/watch', 'Watch'), ('/family', 'The Family'), ('/tree', 'Family Tree'),
-       ('/hospital', 'The Hospital'), ('/heirlooms', 'Heirlooms'), ('/album', 'Family Album'), ('/about', 'About Jim')]
+       ('/hospital', 'The Hospital'), ('/heirlooms', 'Heirlooms'), ('/album', 'Family Album'), ('/reunion', 'Reunion'), ('/about', 'About Jim')]
 
 PERSON_LD = {
   "@context": "https://schema.org", "@type": "Person", "name": "Herman Kiefer", "alternateName": ["Hermann Kiefer", "Dr. Herman Kiefer"],
@@ -139,6 +139,10 @@ home = f'''
  <p class="motto-de">Thue recht und scheue niemand.</p>
  <p class="motto-en">“Do right and fear no one.”</p>
  <p class="motto-by">The Kiefer family motto · from the family coat of arms</p>
+</div></section>
+<section class="reunion-band"><div class="wrap">
+ <img src="/img/saga/golden-wedding-athelney-1900.jpg" alt="The Kiefer family at Herman and Frances's golden wedding, Athelney, 21 July 1900" loading="lazy">
+ <div><span class="eyebrow">Family reunion · Detroit</span><h2>Let's get the family together again.</h2><p>In 1900 the whole family gathered for Herman and Frances's golden wedding. We're planning the next one. If you're a descendant, register for an invitation to the Kiefer family reunion in Detroit.</p><a class="btn solid" href="/reunion">Register for an invitation</a></div>
 </div></section>
 <section class="section dark" style="padding-top:20px">
  <div class="wrap">
@@ -398,6 +402,30 @@ join = f'''<section class="article-hero dark"><div class="wrap"><span class="eye
 <button class="btn solid" type="submit">Join the family</button><div class="msg"></div>
 </form></div><p class="muted" style="font-size:15px;margin-top:20px">Your email and phone are seen only by Jim. See our <a href="/privacy">privacy promise</a>.</p></div></section>'''
 add('join', 'Join the Kiefer Family — Descendants of Dr. Herman Kiefer', 'Are you descended from Dr. Herman Kiefer of Detroit? Join the family community, find relatives and share what you know.', join, '/join')
+
+# ---------------- REUNION ----------------
+reunion = f"""<section class="article-hero dark"><div class="wrap"><span class="eyebrow">Detroit · coming together again</span><h1>The Kiefer Family Reunion</h1><p class="lede" style="max-width:780px">Dr. Herman Kiefer arrived in Detroit in 1849 with a sword, a diploma and a small bag of gold coins. Today his descendants are scattered from Michigan to Sweden, and most of us have never met. We're planning a family reunion in Detroit: a celebration of the family, a look at where it all began, and a chance to finally put faces to names.</p></div></section>
+<section class="section light"><div class="narrow">
+<div class="prose"><p><b>If you'd like an invitation, register below.</b> Every living descendant of Herman and Frances Kiefer is welcome, through any branch and under any last name: Kiefer, Danziger, Parker, Blackburn, Heym, Orr, Nilsson, Jones, Bonning, Marr, Lawrie, Owen, Bayliss, Bajis, Gilbert and more. Spouses and partners are welcome too.</p>
+<p>Date and venue will be set once we know who's coming and when works best. Registering simply puts you on the invitation list; it doesn't commit you to anything.</p></div>
+<div class="panel" style="margin-top:28px">
+<form class="form" data-table="reunion">
+<div class="row"><div><label for="rn">Your name</label><input id="rn" name="name" type="text" required autocomplete="name"></div><div><label for="rc">City and state (or country)</label><input id="rc" name="city" type="text" autocomplete="address-level2" placeholder="e.g. Grand Rapids, MI"></div></div>
+<div class="row"><div><label for="re">Email</label><input id="re" name="email" type="email" required autocomplete="email"></div><div><label for="rp">Phone</label><input id="rp" name="phone" type="tel" autocomplete="tel"></div></div>
+<div class="row"><div><label for="rb">Which branch?</label><select id="rb" name="branch">{opts}</select></div><div><label for="rr">Your connection</label><input id="rr" name="relation" type="text" placeholder="e.g. great-grandson of Cora Kiefer Orr"></div></div>
+<div class="row"><div><label for="rs">How many in your party?</label><select id="rs" name="party_size"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div><div><label for="ri">Would you come?</label><select id="ri" name="interest"><option>Yes, count me in</option><option>Probably</option><option>Maybe, depending on the date</option><option>Can't travel, but keep me posted</option></select></div></div>
+<div><label for="rt">Best time of year for you</label><select id="rt" name="timing"><option>Summer</option><option>Fall</option><option>Spring</option><option>Around a holiday weekend</option><option>No preference</option></select></div>
+<fieldset style="border:1px solid var(--paper-3);padding:16px 18px;display:grid;gap:12px"><legend style="font-family:var(--sans);font-size:13px;font-weight:600;padding:0 6px">Optional</legend>
+<label class="check"><input type="checkbox" name="help_ok" value="yes"> I'd like to help plan the reunion</label>
+<label class="check"><input type="checkbox" name="speak_ok" value="yes"> I have a story, photo or heirloom I could share at the reunion</label>
+<label class="check"><input type="checkbox" name="digest_ok" value="yes" checked> Also send me the occasional family newsletter</label>
+</fieldset>
+<div><label for="rx">Anything else?</label><textarea id="rx" name="notes" style="min-height:80px" placeholder="Questions, ideas, or relatives we should invite."></textarea></div>
+<button class="btn solid" type="submit">Send me an invitation</button><div class="msg"></div>
+</form></div>
+<p class="muted" style="font-size:15px;margin-top:20px">Your contact details are seen only by Jim and are used only for the reunion and, if you choose, the family newsletter. Registering never signs you up for anything else. See our <a href="/privacy">privacy promise</a>.</p>
+</div></section>"""
+add('reunion', 'Kiefer Family Reunion in Detroit — Register for an Invitation', 'Descendants of Dr. Herman Kiefer of Detroit: register to receive an invitation to the Kiefer family reunion in Detroit.', reunion, '/reunion', None, '/img/saga/golden-wedding-athelney-1900.jpg')
 
 def contribute_panel(collapsed=False, page='album'):
     return f"""<div class="panel contrib{' collapsed' if collapsed else ''}">

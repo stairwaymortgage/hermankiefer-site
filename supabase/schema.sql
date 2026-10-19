@@ -69,3 +69,14 @@ revoke all on tree_suggestions from anon; grant insert on tree_suggestions to an
 revoke update, delete on contributions from anon; revoke update, delete on comments from anon;
 alter view public_album set (security_invoker = true);
 alter view public_comments set (security_invoker = true);
+
+-- Family reunion registrations (insert-only for visitors; admin reads)
+create table if not exists reunion (
+  id uuid primary key default gen_random_uuid(), created_at timestamptz default now(),
+  name text not null, email text not null, phone text, city text,
+  relation text, branch text, party_size text, interest text, timing text,
+  help_ok boolean default false, speak_ok boolean default false, digest_ok boolean default false, notes text);
+alter table reunion enable row level security;
+create policy "anyone can register for the reunion" on reunion for insert to anon, authenticated with check (true);
+create policy "admin reunion" on reunion for all to authenticated using (is_admin()) with check (is_admin());
+revoke all on reunion from anon; grant insert on reunion to anon; grant all on reunion to authenticated;
