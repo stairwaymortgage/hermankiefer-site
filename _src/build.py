@@ -4,6 +4,13 @@ Run:  cd _src && python3 build.py
 import os, re, json, html, datetime
 from chapters import CHAPTERS
 
+FILM_ID = "ImkXBMt3gxw"
+CH_START = [9, 75, 136, 206, 264, 325, 388, 448, 505, 572, 643, 709, 776, 836, 896, 947, 1006, 1068, 1129, 1191]
+def film_embed(title, start=0):
+    st = f"?start={start}" if start else ""
+    return (f'<div class="yt"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{FILM_ID}{st}" title="{title}" '
+            'allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
+
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 SITE = 'https://hermankiefer.com'
 TODAY = datetime.date.today().isoformat()
@@ -122,7 +129,7 @@ home = f'''
   <h1>Dr. Herman Kiefer</h1>
   <div class="dates">1825 – 1911 · Revolutionary, physician, father of six</div>
   <p class="lede">He fled Germany in 1849 with a sword, a diploma and a small bag of gold coins. Detroit knows his name from a hospital. This is the rest of the story — told by his family.</p>
-  <div class="btns"><a class="btn solid" href="/watch">Watch the trailer</a><a class="btn ghost" href="/story">Read the story</a></div>
+  <div class="btns"><a class="btn solid" href="/watch">Watch the documentary</a><a class="btn ghost" href="/story">Read the story</a></div>
   <div class="statline"><div><b>7</b>generations</div><div><b>6</b>children who shaped a city</div><div><b>1849</b>arrived in Detroit</div></div>
  </div>
  <div class="portrait"><img src="/img/history/regent-kiefer.jpg" alt="Portrait of Dr. Herman Kiefer as a University of Michigan Regent"><span class="cap">Dr. Herman Kiefer, Regent of the University of Michigan</span></div>
@@ -135,9 +142,9 @@ home = f'''
 </div></section>
 <section class="section dark" style="padding-top:20px">
  <div class="wrap">
-  <div class="trailer" style="background-image:url(/img/history/rastatt-battle-1849.jpg)" data-trailer>
-   <div class="soon"><span>The documentary</span><b>Kiefer: Do Right and Fear No One</b><span>Trailer premieres soon</span></div>
-  </div>
+  <span class="eyebrow">The documentary · 21 minutes</span>
+  <h2 style="margin:6px 0 20px">Kiefer: Do Right and Fear No One</h2>
+  {film_embed("Kiefer: Do Right and Fear No One — full documentary")}
  </div>
 </section>
 
@@ -203,7 +210,7 @@ for i, c in enumerate(CHAPTERS):
             (f'<a href="/story/{nxt["slug"]}" style="text-align:right"><small>Chapter {i+2} →</small><span>{E(nxt["title"])}</span></a>' if nxt else '<a href="/join" style="text-align:right"><small>Your chapter →</small><span>Join the family</span></a>') + '</div>'
     body = f'''<section class="article-hero dark"><div class="narrow"><span class="eyebrow">Chapter {i+1} of 20{" · ★ Essential" if c["star"] else ""}</span><h1>{E(c["title"])}</h1><div class="kicker">{E(c["years"])}</div></div></section>
 <section class="section" style="padding-top:48px"><div class="narrow">
-<div class="trailer" style="background:linear-gradient(135deg,#211912,#16110d);margin-bottom:40px;aspect-ratio:16/6" data-episode="{c['slug']}"><div class="soon"><span>Episode {i+1}</span><b>{E(c["title"])}</b><span>Video coming soon</span></div></div>
+<div style="margin-bottom:40px">{film_embed("Episode " + str(i+1) + ": " + E(c["title"]), CH_START[i])}<p class="muted" style="font-size:15px;margin-top:8px">Episode {i+1} of the documentary <em>Kiefer: Do Right and Fear No One</em>. The video starts at this chapter; keep watching for the rest of the film.</p></div>
 <figure class="figure"><img src="/img/{c['img']}" alt="{E(c['cap'])}"><figcaption>{E(c['cap'])}</figcaption></figure>
 <div class="prose">{md(c['body'])}</div>
 {note}
@@ -222,10 +229,10 @@ for i, c in enumerate(CHAPTERS):
     add(f"story/{c['slug']}", f"{c['title']} — Chapter {i+1} | The Herman Kiefer Story", f"{c['teaser']} {strip(c['body'])[:120]}…", body, '/story', ld, '/img/' + c['img'])
 
 # ---------------- WATCH ----------------
-watch = f'''<section class="article-hero dark"><div class="wrap"><span class="eyebrow">The documentary</span><h1>Watch</h1><p class="lede" style="max-width:760px"><em>Kiefer: Do Right and Fear No One</em> — narrated by Jim Blackburn, Dr. Kiefer's great-great-great-grandson. Twenty 90-second episodes that add up to one film.</p></div></section>
+watch = f'''<section class="article-hero dark"><div class="wrap"><span class="eyebrow">The documentary</span><h1>Watch</h1><p class="lede" style="max-width:760px"><em>Kiefer: Do Right and Fear No One</em> — written, produced and narrated by James Joseph Blackburn, Dr. Kiefer's great-great-great-grandson. Twenty short episodes in one 21-minute film.</p></div></section>
 <section class="section dark" style="padding-top:10px"><div class="wrap">
-<div class="trailer" style="background-image:url(/img/history/rastatt-battle-1849.jpg)" data-trailer><div class="soon"><span>Trailer</span><b>Kiefer: Do Right and Fear No One</b><span>Premieres soon</span></div></div>
-<h2 style="margin-top:72px">Episodes</h2><div class="eps">{eps}</div>
+{film_embed("Kiefer: Do Right and Fear No One — full documentary")}
+<h2 style="margin-top:72px">Chapters</h2><p class="lede">Each chapter has its own page, with the story in writing and the film starting at that chapter.</p><div class="eps">{eps}</div>
 <h2 style="margin-top:72px">The hospital on the news</h2><p class="lede">Detroit TV and city coverage of the Herman Kiefer Hospital and its redevelopment. <a href="/hospital">More on the hospital →</a></p>
 <div class="grid g2" style="margin-top:24px">
 {''.join(f'<div><div class="yt"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{v}" title="{E(t)}" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p class="muted" style="font-size:15px;margin-top:8px">{E(t)}</p></div>' for v, t in [("K2vRD37ZGIE", "WXYZ-TV, May 2021: the developer shares his vision for the hospital campus"), ("reyZHwMVg-k", "WXYZ-TV, March 2014: the City of Detroit takes bids on the Herman Kiefer complex"), ("jSayJE7cleE", "Detroit City Council presentation on the redevelopment, c. 2016"), ("elL0_IKjcmw", "College for Creative Studies: students make art inside the empty hospital")])}
