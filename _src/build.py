@@ -241,7 +241,7 @@ def _area(r):
         if k in n: return k
     return r['city']
 _rows = ''.join(f'<tr><td class="num">{r["n"]}</td><td><b>{E(r["name"])}</b><div class="muted" style="font-size:14px">{E(r["note"] or "")}</div></td><td>{E(r["addr"])}<div class="muted" style="font-size:14px">{E(_area(r))}{"" if _area(r) == r["city"] else ", " + E(r["city"])}</div></td><td>{E(r["type"])}</td><td>{"<span class=\"tag ok\">Documented</span>" if r["ev"].startswith("Documented") else "<span class=\"tag rep\">Reported</span>"}{(" <a href=\"" + E(r["url"]) + "\" rel=\"noopener\" target=\"_blank\">source</a>") if r["url"] else ""}{(" · <a href=\"" + E(r["photo_page"]) + "\" rel=\"noopener\" target=\"_blank\">photo</a>") if r.get("photo_page") else ""}</td></tr>' for r in MARR)
-_gal = ''.join(f'<figure class="figure" style="margin:0"><img src="/img/{r["img"]}" alt="{E(r["name"])}, {E(r["addr"])}" loading="lazy"><figcaption><b>{r["n"]}. {E(r["name"])}</b>, {E(r["addr"])}. Photo: {E(r["photo_credit"])}.</figcaption></figure>' for r in MARR if r.get("img"))
+_gal = ''.join(f'<figure><a href="/img/{r["img"]}" target="_blank" rel="noopener"><img src="/img/{r["img"]}" alt="{E(r["name"])}, {E(r["addr"])}" loading="lazy"></a><figcaption><b>{r["n"]}. {E(r["name"])}</b><span>{E(r["addr"])}, {E(r["city"])}</span><small>Photo: {E(r["photo_credit"])}</small></figcaption></figure>' for r in MARR if r.get("img"))
 _docd = sum(1 for r in MARR if r['ev'].startswith('Documented'))
 marr_body = f"""<section class="article-hero dark"><div class="narrow"><span class="eyebrow">The family’s architect · 1886 – 1946</span><h1>Richard H. Marr</h1><div class="kicker">Architect of the Kiefer Building, Palmer Woods mansions and more than fifty Michigan buildings</div></div></section>
 <section class="section" style="padding-top:48px"><div class="narrow">
@@ -256,7 +256,7 @@ marr_body = f"""<section class="article-hero dark"><div class="narrow"><span cla
 </div></section>
 <section class="section" style="padding-top:8px"><div class="wrap">
 <h2>Buildings by Richard H. Marr</h2>
-<div class="grid g2" style="margin:24px 0 40px">{_gal}</div>
+<div class="mgal">{_gal}</div>
 <p class="lede">{len(MARR)} buildings and projects, all in Michigan. <b>{_docd}</b> are documented in published sources; the rest are reported and still need original plans or permits to confirm. This is a working list. Follow the “photo” links to see each building. If you know of a Marr building, or have photographs from the Marr family archive, <a href="/share">share them with us</a>.</p>
 <div class="tablewrap"><table class="btable"><thead><tr><th>#</th><th>Building</th><th>Address</th><th>Type</th><th>Evidence</th></tr></thead><tbody>{_rows}</tbody></table></div>
 <p class="muted" style="font-size:14px;margin-top:16px">Many of these are private homes. Please enjoy them from the street. Entry 53 is a renovation: Albert Kahn designed the Detroit Athletic Club; Marr modernized its interiors around 1945–46. Research by the family, from Historic Detroit, the City of Detroit’s historic district reports, the Palmer Woods, Sherwood Forest and Boston–Edison associations, the Grosse Pointe Historical Society and the Michigan Society of Architects Bulletin.</p>
