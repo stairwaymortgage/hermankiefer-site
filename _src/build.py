@@ -110,6 +110,23 @@ def lineage(title="These are my roots", foot=""):
 URLS = []
 def add(*a, **k): URLS.append(page(*a, **k))
 
+FAMILY_NAMES = ['Bajis', 'Bayliss', 'Blackburn', 'Bonning', 'Danziger', 'Gilbert', 'Heym', 'Jones', 'Lawrie', 'Marr', 'Nilsson', 'Orr', 'Owen', 'Parker']
+
+
+def names_wall(cta=True):
+    items = ''.join(f'<li>{n}</li>' for n in FAMILY_NAMES)
+    btn = '<div class="btns" style="justify-content:center;margin-top:44px"><a class="btn solid" href="/reunion">Is your name here? Register for the reunion</a></div>' if cta else ''
+    return f'''<section class="names-wall" aria-labelledby="nw-h"><div class="wrap center">
+ <img class="nw-crest" src="/img/history/kiefer-crest-gold.png" alt="" aria-hidden="true">
+ <span class="eyebrow">One family, many names</span>
+ <h2 id="nw-h" class="nw-root">Kiefer</h2>
+ <p class="nw-sub">and the families of his descendants</p>
+ <ul class="nw-list">{items}</ul>
+ <p class="nw-foot">…and more we have yet to find.</p>{btn}
+</div></section>'''
+
+
+
 # ---------------- HOME ----------------
 eps = ''.join(f'''<a class="ep" href="/story/{c["slug"]}"><img src="/img/{c["img"]}" alt="" loading="lazy"><div><span class="n">Chapter {i+1}{" · ★" if c["star"] else ""}</span><h4>{E(c["title"])}</h4><p>{E(c["teaser"])}</p></div></a>''' for i, c in enumerate(CHAPTERS))
 CHILDREN = [
@@ -189,6 +206,8 @@ home = f'''
   <div class="grid g3">{kids}</div>
  </div>
 </section>
+
+{names_wall()}
 
 {lineage('These are my roots', '<div class="foot btns" style="justify-content:center"><a class="btn solid" href="/tree">Explore the family tree</a><a class="btn ghost" href="/about">Meet Jim</a></div>')}
 
@@ -416,6 +435,7 @@ add('join', 'Join the Kiefer Family — Descendants of Dr. Herman Kiefer', 'Are 
 
 # ---------------- REUNION ----------------
 reunion = f"""<section class="article-hero dark"><div class="wrap"><span class="eyebrow">Detroit · coming together again</span><h1>The Kiefer Family Reunion</h1><p class="lede" style="max-width:780px">Dr. Herman Kiefer arrived in Detroit in 1849 with a sword, a diploma and a small bag of gold coins. Today his descendants are scattered from Michigan to Sweden, and most of us have never met. We're planning a family reunion in Detroit: a celebration of the family, a look at where it all began, and a chance to finally put faces to names.</p></div></section>
+{names_wall(cta=False)}
 <section class="section light"><div class="narrow">
 <div class="prose"><p><b>If you'd like an invitation, register below.</b> Every living descendant of Herman and Frances Kiefer is welcome, through any branch and under any last name: Kiefer, Danziger, Parker, Blackburn, Heym, Orr, Nilsson, Jones, Bonning, Marr, Lawrie, Owen, Bayliss, Bajis, Gilbert and more. Spouses and partners are welcome too.</p>
 <p>Date and venue will be set once we know who's coming and when works best. Registering simply puts you on the invitation list; it doesn't commit you to anything.</p></div>
