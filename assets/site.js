@@ -25,10 +25,27 @@
   tabs.forEach(function(t){t.addEventListener('click',function(){setKind(t.dataset.kind)})});
   if(panel&&!panel.classList.contains('collapsed'))setKind('item');
 
+  // Also send sign-ups to Jim's CRM (OneFocus), so every relative who joins,
+  // registers for the reunion or shares something lands in his contacts.
+  // A copy only: the site's own database below is still the record, and a
+  // CRM hiccup never blocks or slows the form.
+  var CRM_FORMS={members:'join',reunion:'reunion',contributions:'share'};
+  function toCRM(f){
+    var form=CRM_FORMS[f.dataset.table]; if(!cfg.crm||!form)return;
+    try{
+      var out={form:form};
+      new FormData(f).forEach(function(v,k){ if(k==='file'||typeof v!=='string'||v==='')return; out[k]=v; });
+      if(!out.email)return;
+      if(!out.name&&out.credit_name)out.name=out.credit_name;
+      fetch(cfg.crm,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(out),keepalive:true}).catch(function(){});
+    }catch(e){}
+  }
+
   // generic forms -> Supabase
   document.querySelectorAll('form[data-table]').forEach(function(f){
     f.addEventListener('submit',function(ev){
       ev.preventDefault();
+      toCRM(f);
       if(!ready){msg(f,'wait','Thank you! This form opens in a few days — please check back soon, or write to Jim through the About page.');return;}
       msg(f,'wait','Sending…');
       var fd=new FormData(f), row={};
