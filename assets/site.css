@@ -390,3 +390,10 @@ footer{background:#0f1f3a}
 .names-wall .nw-list li{font-family:var(--serif);font-size:clamp(28px,4.4vw,52px);line-height:1.35;color:var(--on-ink);padding:0 .6em;position:relative}
 .names-wall .nw-list li:nth-child(even){font-style:italic;color:#ecd9a0}
 .names-wall .nw-foot{font-family:var(--body);font-style:italic;color:var(--on-ink-muted);margin:34px 0 0;font-size:18px}
+
+/* Herman Kiefer Resources hub */
+.reslist{list-style:none;padding:0;margin:0;display:grid;gap:0;border-top:1px solid var(--paper-3)}
+.reslist li{padding:14px 0;border-bottom:1px solid var(--paper-3);display:grid;gap:4px}
+.reslist a{font-family:var(--body);font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
+.reslist a:hover{text-decoration:underline;color:var(--gold-deep)}
+.reslist span{color:var(--muted);font-size:15.5px}

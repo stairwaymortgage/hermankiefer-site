@@ -87,7 +87,7 @@ def page(path, title, desc, body, active='', ld=None, img='/img/roots-seven-gene
 <footer><div class="wrap">
 <div class="cols">
 <div><h4>HermanKiefer.com</h4><p class="motto">Thue recht und scheue niemand.<br>Do right and fear no one.</p><p>The story of Dr. Herman Kiefer (1825–1911) and his family — Volume Two of <em>The Kiefer Saga</em>, written together by his descendants.</p></div>
-<div><h4>Read</h4><a href="/story">The Story</a><a href="/family">The Six Children</a><a href="/hospital">The Hospital</a><a href="/heirlooms">Heirlooms</a><a href="/mysteries">Open Questions</a><a href="/sources">Sources</a></div>
+<div><h4>Read</h4><a href="/story">The Story</a><a href="/family">The Six Children</a><a href="/hospital">The Hospital</a><a href="/heirlooms">Heirlooms</a><a href="/mysteries">Open Questions</a><a href="/herman-kiefer-resources">Herman Kiefer Resources</a><a href="/sources">Sources</a></div>
 <div><h4>Join in</h4><a href="/join">Join the family</a><a href="/share">Share a photo or story</a><a href="/album">Family Album</a><a href="/tree">Family Tree</a></div>
 <div><h4>About</h4><a href="/about">About Jim Blackburn</a><a href="https://jamesjblackburn.com">JamesJBlackburn.com</a><a href="/privacy">Privacy</a></div>
 </div>
@@ -537,12 +537,12 @@ SRC = [
               ("Family photographs, engagement announcement (1942) and obituary (2007) — Blackburn family collection", "")]),
  ("Reference", [("Herman Kiefer — Wikipedia", "https://en.wikipedia.org/wiki/Herman_Kiefer"), ("Herman Kiefer Hospital — Wikipedia", "https://en.wikipedia.org/wiki/Herman_Kiefer_Hospital"),
                 ("Kiefer, Hermann — Deutsche Biographie", "https://www.deutsche-biographie.de/sfz080_00294_1.html"), ("Dr Herman Kiefer (1825–1911) — Find a Grave", "https://www.findagrave.com/"),
-                ("Herman Kiefer Hospital — Historic Detroit", "https://historicdetroit.org/buildings/herman-kiefer-hospital"), ("Herman Kiefer Hospital — detroit1701.org", "https://detroit1701.org/"),
-                ("The Herman Kiefer Hospital of Detroit — Citizens Research Council of Michigan", "https://crcmich.org/"), ("Detroit Historical Society collection", "https://www.detroithistorical.org/")]),
- ("News", [("Crain's Detroit Business — developer files Chapter 11 (13 Jun 2025); developer sues city (12 Jun 2026)", "https://www.crainsdetroit.com/"),
-           ("Detroit Free Press — redevelopment coverage (2015; 16 Jun 2026)", "https://www.freep.com/"), ("Outlier Media — Detroit Development Tracker", "https://development-tracker.outliermedia.org/"),
+                ("Herman Kiefer Hospital — Historic Detroit", "https://historicdetroit.org/buildings/herman-kiefer-hospital"), ("Herman Kiefer Hospital — detroit1701.org", "https://detroit1701.org/Kiefer%20Medical%20Center.html"),
+                ("The Herman Kiefer Hospital of Detroit — Citizens Research Council of Michigan", "https://crcmich.org/publications/herman_kiefer_hospital_in_detroit"), ("Herman Kiefer Hospital Complex, photographic print — Detroit Historical Society", "https://www.detroithistorical.org/learn/online-research/collection/photo/print-photographic-8445")]),
+ ("News", [("Crain's Detroit Business — Herman Kiefer developer sues city (12 Jun 2026)", "https://www.crainsdetroit.com/real-estate/commercial/cdb-herman-kiefer-developer-sues-city-20260612/"),
+           ("Detroit Free Press — Herman Kiefer Hospital lawsuit (16 Jun 2026)", "https://www.freep.com/story/money/business/2026/06/16/herman-kiefer-hospital-detroit-lawsuit/90558918007/"), ("Outlier Media — Detroit Development Tracker", "https://development-tracker.outliermedia.org/projects/herman-kiefer-hospital-development"),
            ("Model D — Herman Kiefer development", "https://modeldmedia.com/"), ("WXYZ-TV Detroit (2014, 2021)", "https://www.youtube.com/@wxyztvdetroit"),
-           ("City of Detroit — Herman Kiefer", "https://detroitmi.gov/"), ("Herman Kiefer Development", "https://www.hermankieferdetroit.com/")]),
+           ("City of Detroit — Herman Kiefer Hospital", "https://detroitmi.gov/document/herman-kiefer-hospital"), ("Herman Kiefer Development", "https://www.hermankieferdetroit.com/")]),
  ("Images", [("Sulzburg, c. 1919 — Wikimedia Commons (public domain)", "https://commons.wikimedia.org/wiki/File:Sulzburg_1919.jpg"),
              ("Uprising at Rastatt, 1849 — LEO-BW via Wikimedia Commons (public domain)", "https://commons.wikimedia.org/wiki/File:Ausbruch_des_Aufstands_in_Rastatt_13_Mai_1849.jpg"),
              ("Battle outside Rastatt, Ernst von Lepell, 1852 — Wikimedia Commons (public domain)", "https://commons.wikimedia.org/wiki/File:Das_Ausfallgefecht_vor_Rastatt_am_8._Juli_1849_(2).jpg"),
@@ -555,6 +555,62 @@ SRC = [
              ("Portraits labeled \"Plate from the Saga\" — The Kiefer Saga (1951)", ""), ("Hospital campus photographs — Blackburn family collection", "")]),
 ]
 src_html = ''.join(f'<h2 style="margin-top:48px">{E(h)}</h2><ul style="padding-left:20px">' + ''.join(f'<li style="margin-bottom:8px">' + (f'<a href="{u}" rel="noopener">{E(t)}</a>' if u else E(t)) + '</li>' for t, u in items) + '</ul>' for h, items in SRC)
+# ---------------- HERMAN KIEFER RESOURCES (outbound hub) ----------------
+RES = [
+ ("Dr. Herman Kiefer, the man (1825–1911)", "The revolutionary, physician and University of Michigan Regent the hospital was named for.", [
+   ("Herman Kiefer — Wikipedia", "https://en.wikipedia.org/wiki/Herman_Kiefer", "Encyclopedia biography: Baden revolution, Detroit medical practice, consul and regent."),
+   ("Kiefer, Hermann — Deutsche Biographie", "https://www.deutsche-biographie.de/sfz080_00294_1.html", "The German national biography's record of Herman Kiefer."),
+   ("Regent Herman Kiefer — History of the University of Michigan (1906)", "https://commons.wikimedia.org/wiki/File:Herman_Kiefer_History_of_UM.png", "His official portrait as a Regent of the University of Michigan."),
+   ("The Kiefer Saga (1951) by Edgar W. Kiefer — Internet Archive", "https://archive.org/", "The family history written by his grandson, digitized from the Allen County Public Library."),
+   ("Dr. Herman Kiefer's grave — Find a Grave", "https://www.findagrave.com/", "Burial record and memorial."),
+ ]),
+ ("Herman Kiefer Hospital history", "The Detroit city hospital that has carried his name since 1911, closed in 2013.", [
+   ("Herman Kiefer Hospital — Wikipedia", "https://en.wikipedia.org/wiki/Herman_Kiefer_Hospital", "Overview of the hospital, its Albert Kahn buildings and its closure."),
+   ("Herman Kiefer Hospital — Historic Detroit", "https://historicdetroit.org/buildings/herman-kiefer-hospital", "Architecture and history of the hospital buildings."),
+   ("Herman Kiefer Hospital photo gallery — Historic Detroit", "https://historicdetroit.org/galleries/herman-kiefer-hospital-photos", "Photographs of the Herman Kiefer campus."),
+   ("Herman Kiefer Hospital (Kiefer Medical Center) — detroit1701.org", "https://detroit1701.org/Kiefer%20Medical%20Center.html", "Historical marker-style history: contagious disease care and Detroit's polio center."),
+   ("The Herman Kiefer Hospital in Detroit — Citizens Research Council of Michigan", "https://crcmich.org/publications/herman_kiefer_hospital_in_detroit", "The Citizens Research Council's report on the hospital and its work."),
+   ("Herman Kiefer Hospital Complex photograph — Detroit Historical Society", "https://www.detroithistorical.org/learn/online-research/collection/photo/print-photographic-8445", "A print from the Detroit Historical Society's collection."),
+   ("Chest X-ray at Herman Kiefer Hospital, 1939 — Library of Congress", "https://www.loc.gov/item/2017844251/", "Arthur Siegel's photograph of tuberculosis screening."),
+   ("Boy in an Emerson respirator at Herman Kiefer, c. 1955 — National Museum of Health and Medicine", "https://commons.wikimedia.org/wiki/File:Boy_in_Emerson_Respirator_(NCP_4145),_National_Museum_of_Health_and_Medicine_(3300143156).jpg", "Polio care at Herman Kiefer."),
+ ]),
+ ("Rebuilding Herman Kiefer: the redevelopment", "Plans to bring the hospital campus and the neighborhood back to life.", [
+   ("Herman Kiefer Development — official site", "https://www.hermankieferdetroit.com/", "The developer's site for the Herman Kiefer campus."),
+   ("Herman Kiefer Development — background", "https://www.hermankieferdetroit.com/background", "The partners behind the Herman Kiefer redevelopment."),
+   ("Herman Kiefer community meetings and events", "https://www.hermankieferdetroit.com/meeting-events", "Upcoming neighborhood meetings about the Herman Kiefer campus."),
+   ("Herman Kiefer project — Studio Castellano", "http://www.scnyc.net/herman-kiefer", "The architect and developer's project page: 860,000 square feet on 38 acres."),
+   ("Herman Kiefer Hospital — City of Detroit", "https://detroitmi.gov/document/herman-kiefer-hospital", "City of Detroit document on the Herman Kiefer development."),
+   ("Herman Kiefer Hospital development — Outlier Media Development Tracker", "https://development-tracker.outliermedia.org/projects/herman-kiefer-hospital-development", "Timeline and status of the redevelopment deal."),
+   ("Herman Kiefer developer sues the City of Detroit — Crain's Detroit Business (June 2026)", "https://www.crainsdetroit.com/real-estate/commercial/cdb-herman-kiefer-developer-sues-city-20260612/", "The latest chapter in the redevelopment."),
+   ("Herman Kiefer Hospital lawsuit — Detroit Free Press (June 2026)", "https://www.freep.com/story/money/business/2026/06/16/herman-kiefer-hospital-detroit-lawsuit/90558918007/", "Free Press coverage of the dispute over the campus."),
+   ("Herman Kiefer development — Model D", "https://modeldmedia.com/", "Detroit neighborhood news coverage."),
+   ("Herman Kiefer home rehabs discussion — DetroitYES! forum", "https://detroityes.com/mb/index.php?threads/developer-makes-progress-on-detroit-home-rehabs-but-struggling-with-herman-kiefer-ca.26270/", "Detroiters discuss the neighborhood rehabs and the hospital campus."),
+ ]),
+ ("Herman Kiefer on video", "News reports and short films about the hospital.", [
+   ("WXYZ-TV (2021): developer shares his vision for Herman Kiefer Hospital", "https://www.youtube.com/watch?v=K2vRD37ZGIE", "Rooftop tour of the campus."),
+   ("WXYZ-TV (2014): City of Detroit takes bids on the Herman Kiefer complex", "https://www.youtube.com/watch?v=reyZHwMVg-k", "The city tours bidders after the 2013 closure."),
+   ("Detroit City Council presentation on the Herman Kiefer development", "https://www.youtube.com/watch?v=jSayJE7cleE", "City planning staff present the redevelopment, c. 2016."),
+   ("College for Creative Studies x Herman Kiefer Hospital", "https://www.youtube.com/watch?v=elL0_IKjcmw", "Students make art inside the empty hospital."),
+   ("Herman Kiefer Hospital: A Detroit Legacy — TikTok", "https://www.tiktok.com/@kelvinwashington36/video/7463913503519411502", "A short video on the hospital's legacy."),
+ ]),
+ ("The Herman Kiefer neighborhood", "The Detroit neighborhood that shares the hospital's name.", [
+   ("Herman Kiefer, Detroit — Niche neighborhood profile", "https://www.niche.com/places-to-live/n/herman-kiefer-detroit-mi/", "Population, schools and what it's like to live there."),
+   ("Herman Kiefer, Detroit — Trulia neighborhood guide", "https://www.trulia.com/n/mi/detroit/herman-kiefer/882320/", "What locals say about the Herman Kiefer neighborhood."),
+   ("Herman Kiefer Health Complex — Yelp", "https://www.yelp.com/biz/herman-kiefer-health-complex-detroit", "Listing for the former health complex at 1151 Taylor."),
+ ]),
+ ("Herman Kiefer in Detroit community groups", "Posts about Herman Kiefer in Detroit Facebook groups.", [
+   ("Herman Kiefer discussion — Facebook group post (1)", "https://www.facebook.com/groups/1499834970343768/posts/3881408448853063/", ""),
+   ("Herman Kiefer discussion — Facebook group post (2)", "https://www.facebook.com/groups/412764338844049/posts/7900111396775935/", ""),
+   ("Herman Kiefer discussion — Facebook group post (3)", "https://www.facebook.com/groups/522585618129103/posts/3272905449763759/", ""),
+ ]),
+]
+res_html = ''.join(f'<h2 style="margin-top:56px">{E(h)}</h2><p class="muted" style="margin:6px 0 18px">{E(d)}</p><ul class="reslist">' + ''.join(f'<li><a href="{u}" target="_blank" rel="noopener">{E(t)}</a>' + (f'<span>{E(n)}</span>' if n else '') + '</li>' for t, u, n in items) + '</ul>' for h, d, items in RES)
+res_ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Herman Kiefer Resources", "url": SITE + "/herman-kiefer-resources",
+           "about": [{"@type": "Person", "name": "Herman Kiefer", "birthDate": "1825-11-19", "deathDate": "1911-10-11"}, {"@type": "Hospital", "name": "Herman Kiefer Hospital", "address": "1151 Taylor St, Detroit, MI"}]}]
+add('herman-kiefer-resources', 'Herman Kiefer Resources: Hospital History, Redevelopment News & the Detroit Neighborhood | HermanKiefer.com',
+    'Every good resource on Herman Kiefer in one place: Dr. Herman Kiefer\'s biography, Herman Kiefer Hospital history and photos, redevelopment news, videos and the Herman Kiefer neighborhood in Detroit.',
+    f'<section class="article-hero dark"><div class="wrap"><span class="eyebrow">The Herman Kiefer library</span><h1>Herman Kiefer Resources</h1><p class="lede" style="max-width:780px">Everything worth reading, watching and bookmarking about Herman Kiefer: the man, the hospital that carries his name, the plans to rebuild it, and the Detroit neighborhood around it. Know a link we\'re missing? <a href="/share">Send it to us</a>.</p></div></section><section class="section light" style="padding-top:20px"><div class="narrow">{res_html}<p style="margin-top:56px">For the records behind our own family story, see <a href="/sources">Sources</a>.</p></div></section>', '/sources', res_ld)
+
 add('sources', 'Sources — Dr. Herman Kiefer and the Kiefer Family | HermanKiefer.com', 'Primary records, books, news coverage and image credits behind the Herman Kiefer family story.',
     f'<section class="article-hero dark"><div class="wrap"><span class="eyebrow">How we know what we know</span><h1>Sources</h1></div></section><section class="section light" style="padding-top:20px"><div class="narrow">{src_html}</div></section>', '')
 
