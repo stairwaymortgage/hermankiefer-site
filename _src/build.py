@@ -587,6 +587,9 @@ RES = [
    ("Herman Kiefer home rehabs discussion — DetroitYES! forum", "https://detroityes.com/mb/index.php?threads/developer-makes-progress-on-detroit-home-rehabs-but-struggling-with-herman-kiefer-ca.26270/", "Detroiters discuss the neighborhood rehabs and the hospital campus."),
  ]),
  ("Herman Kiefer on video", "News reports and short films about the hospital.", [
+   ("Kiefer: Do Right and Fear No One — the Herman Kiefer documentary (full film)", "https://www.youtube.com/watch?v=FbN2cv3rp6U", "The true story of Dr. Herman Kiefer and the family behind Detroit's Herman Kiefer Hospital, in 21 minutes."),
+   ("Herman Kiefer documentary — official teaser", "https://www.youtube.com/watch?v=YEc98QyJnw8", "The 50-second teaser."),
+   ("The Family Architect: Richard H. Marr", "https://www.youtube.com/watch?v=adeSKEcxsaU", "Dr. Kiefer's grandson-in-law and the Detroit buildings he designed."),
    ("WXYZ-TV (2021): developer shares his vision for Herman Kiefer Hospital", "https://www.youtube.com/watch?v=K2vRD37ZGIE", "Rooftop tour of the campus."),
    ("WXYZ-TV (2014): City of Detroit takes bids on the Herman Kiefer complex", "https://www.youtube.com/watch?v=reyZHwMVg-k", "The city tours bidders after the 2013 closure."),
    ("Detroit City Council presentation on the Herman Kiefer development", "https://www.youtube.com/watch?v=jSayJE7cleE", "City planning staff present the redevelopment, c. 2016."),
