@@ -4,11 +4,14 @@ Run:  cd _src && python3 build.py
 import os, re, json, html, datetime
 from chapters import CHAPTERS
 
-FILM_ID = "ImkXBMt3gxw"
+FILM_ID = "FbN2cv3rp6U"
+TEASER_ID = "YEc98QyJnw8"
+MARR_ID = "adeSKEcxsaU"
+EP_IDS = ['TH43riWazis', 'bs8tfmhmkkc', 'MrhFXZc4-zM', 'sRY6Htg6D6E', 'povpdiABsy8', '9I2VGpsE9_0', '8z_6Y1Cnx28', 'JTpx61HqajQ', 'G69Mc6kLi_w', '7ByKrw28rrI', 'Xd5nS7Ed6zw', 'kNmFGbNYA3Q', '2yiREDD6Jak', '-c_K2Jd1bCE', '-YsFmX56dGk', 'D9_5xrKRtYk', '71Fsy19AL5A', 'NDw4KF23a98', 'MEanRjgKDRA', 'EiON4jKKBn4']
 CH_START = [9, 75, 136, 206, 264, 325, 388, 448, 505, 572, 643, 709, 776, 836, 896, 947, 1006, 1068, 1129, 1191]
-def film_embed(title, start=0):
+def film_embed(title, start=0, vid=None):
     st = f"?start={start}" if start else ""
-    return (f'<div class="yt"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{FILM_ID}{st}" title="{title}" '
+    return (f'<div class="yt"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{vid or FILM_ID}{st}" title="{title}" '
             'allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -244,7 +247,7 @@ for i, c in enumerate(CHAPTERS):
             (f'<a href="/story/{nxt["slug"]}" style="text-align:right"><small>Chapter {i+2} →</small><span>{E(nxt["title"])}</span></a>' if nxt else '<a href="/join" style="text-align:right"><small>Your chapter →</small><span>Join the family</span></a>') + '</div>'
     body = f'''<section class="article-hero dark"><div class="narrow"><span class="eyebrow">Chapter {i+1} of 20{" · ★ Essential" if c["star"] else ""}</span><h1>{E(c["title"])}</h1><div class="kicker">{E(c["years"])}</div></div></section>
 <section class="section" style="padding-top:48px"><div class="narrow">
-<div style="margin-bottom:40px">{film_embed("Episode " + str(i+1) + ": " + E(c["title"]), CH_START[i])}<p class="muted" style="font-size:15px;margin-top:8px">Episode {i+1} of the documentary <em>Kiefer: Do Right and Fear No One</em>. The video starts at this chapter; keep watching for the rest of the film.</p></div>
+<div style="margin-bottom:40px">{film_embed("Episode " + str(i+1) + ": " + E(c["title"]), vid=EP_IDS[i])}<p class="muted" style="font-size:15px;margin-top:8px">Episode {i+1} of 20 from the documentary <em>Kiefer: Do Right and Fear No One</em>. <a href="https://www.youtube.com/watch?v={FILM_ID}&amp;t={CH_START[i]}s" target="_blank" rel="noopener">Watch the full film from this chapter →</a></p></div>
 <figure class="figure"><img src="/img/{c['img']}" alt="{E(c['cap'])}"><figcaption>{E(c['cap'])}</figcaption></figure>
 <div class="prose">{md(c['body'])}</div>
 {note}
@@ -274,6 +277,7 @@ _rows = ''.join(f'<tr><td class="num">{r["n"]}</td><td><b>{E(r["name"])}</b><div
 _gal = ''.join(f'<figure><a href="/img/{r["img"]}" target="_blank" rel="noopener"><img src="/img/{r["img"]}" alt="{E(r["name"])}, {E(r["addr"])}" loading="lazy"></a><figcaption><b>{r["n"]}. {E(r["name"])}</b><span>{E(r["addr"])}, {E(r["city"])}</span><small>Photo: {E(r["photo_credit"])}</small></figcaption></figure>' for r in MARR if r.get("img"))
 _docd = sum(1 for r in MARR if r['ev'].startswith('Documented'))
 marr_body = f"""<section class="article-hero dark"><div class="narrow"><span class="eyebrow">The family’s architect · 1886 – 1946</span><h1>Richard H. Marr</h1><div class="kicker">Architect of the Kiefer Building, Palmer Woods mansions and more than fifty Michigan buildings</div></div></section>
+<section class="section dark" style="padding:40px 0 56px"><div class="narrow"><span class="eyebrow">The film · 2 minutes</span><h2 style="margin:6px 0 20px">The Family Architect</h2>{film_embed("The Family Architect: Richard H. Marr", vid=MARR_ID)}</div></section>
 <section class="section" style="padding-top:48px"><div class="narrow">
 <figure class="figure" id="top"><img src="/img/history/kiefer-building-1911.jpg" alt="Drawing of the Kiefer Building, Gratiot Avenue, Detroit, 1911"><figcaption>The Kiefer Building at Library and Gratiot, as the Detroit Journal pictured it in February 1911. Marr designed it on the corner Frances Kiefer refused to sell.</figcaption></figure>
 <div class="prose">
@@ -300,7 +304,8 @@ add('richard-marr', 'Richard H. Marr, Detroit Architect (1886–1946): The Kiefe
 watch = f'''<section class="article-hero dark"><div class="wrap"><span class="eyebrow">The documentary</span><h1>Watch</h1><p class="lede" style="max-width:760px"><em>Kiefer: Do Right and Fear No One</em> — written, produced and narrated by James Joseph Blackburn, Dr. Kiefer's great-great-great-grandson. Twenty short episodes in one 21-minute film.</p></div></section>
 <section class="section dark" style="padding-top:10px"><div class="wrap">
 {film_embed("Kiefer: Do Right and Fear No One — full documentary")}
-<h2 style="margin-top:72px">Chapters</h2><p class="lede">Each chapter has its own page, with the story in writing and the film starting at that chapter.</p><div class="eps">{eps}</div>
+<div class="grid g2" style="margin-top:56px;align-items:start"><div><span class="eyebrow">Teaser · 50 seconds</span>{film_embed("Kiefer: Do Right and Fear No One — teaser", vid=TEASER_ID)}</div><div><span class="eyebrow">Also in the family · 2 minutes</span>{film_embed("The Family Architect: Richard H. Marr", vid=MARR_ID)}<p class="muted" style="font-size:15px;margin-top:8px"><a href="/richard-marr">Richard H. Marr and his buildings →</a></p></div></div>
+<h2 style="margin-top:72px">Chapters</h2><p class="lede">Each chapter has its own page, with its episode and the story in writing.</p><div class="eps">{eps}</div>
 <h2 style="margin-top:72px">The hospital on the news</h2><p class="lede">Detroit TV and city coverage of the Herman Kiefer Hospital and its redevelopment. <a href="/hospital">More on the hospital →</a></p>
 <div class="grid g2" style="margin-top:24px">
 {''.join(f'<div><div class="yt"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{v}" title="{E(t)}" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p class="muted" style="font-size:15px;margin-top:8px">{E(t)}</p></div>' for v, t in [("K2vRD37ZGIE", "WXYZ-TV, May 2021: the developer shares his vision for the hospital campus"), ("reyZHwMVg-k", "WXYZ-TV, March 2014: the City of Detroit takes bids on the Herman Kiefer complex"), ("jSayJE7cleE", "Detroit City Council presentation on the redevelopment, c. 2016"), ("elL0_IKjcmw", "College for Creative Studies: students make art inside the empty hospital")])}
