@@ -397,3 +397,10 @@ footer{background:#0f1f3a}
 .reslist a{font-family:var(--body);font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
 .reslist a:hover{text-decoration:underline;color:var(--gold-deep)}
 .reslist span{color:var(--muted);font-size:15.5px}
+
+/* The Future timeline */
+.fut-tl{list-style:none;margin:8px 0 40px;padding:0 0 0 22px;border-left:3px solid var(--gold);display:grid;gap:14px}
+.fut-tl li{position:relative;display:grid;grid-template-columns:96px 1fr;gap:14px;font-size:17px;line-height:1.5}
+.fut-tl li::before{content:"";position:absolute;left:-30px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--gold);border:3px solid var(--paper)}
+.fut-tl b{font-family:var(--sans);font-size:14px;letter-spacing:.04em;color:var(--gold-deep);padding-top:2px}
+@media (max-width:560px){.fut-tl li{grid-template-columns:1fr;gap:2px}}

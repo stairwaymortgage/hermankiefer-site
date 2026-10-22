@@ -38,7 +38,7 @@ def md(text):
 def strip(s): return re.sub(r'[*>]', '', s)
 
 NAV = [('/story', 'The Story'), ('/watch', 'Watch'), ('/family', 'The Family'), ('/tree', 'Family Tree'),
-       ('/hospital', 'The Hospital'), ('/heirlooms', 'Heirlooms'), ('/album', 'Family Album'), ('/reunion', 'Reunion'), ('/about', 'About Jim')]
+       ('/hospital', 'The Hospital'), ('/the-future', 'The Future'), ('/heirlooms', 'Heirlooms'), ('/album', 'Family Album'), ('/reunion', 'Reunion'), ('/about', 'About Jim')]
 
 PERSON_LD = {
   "@context": "https://schema.org", "@type": "Person", "name": "Herman Kiefer", "alternateName": ["Hermann Kiefer", "Dr. Herman Kiefer"],
@@ -383,6 +383,68 @@ hosp = f'''<section class="hero dark" style="min-height:70vh"><div class="copy">
 <div class="note" style="margin-top:40px"><b>Born at Herman Kiefer?</b>Were you born there, treated there, or did you work there? We'd love your memories and photos for the family archive. <a href="/share">Share your story →</a></div></div></section>'''
 add('hospital', 'Herman Kiefer Hospital, Detroit (1911–2013): History, Name & What Happened', 'Why Detroit\'s Herman Kiefer Hospital bears that name, what it treated, birth records, when it closed, who bought it, and the latest on the redevelopment lawsuit.', hosp, '/hospital', [faq_ld, hosp_ld], '/img/hospital/facade-sky.jpg')
 
+# ---------------- THE FUTURE (Rebuilding Detroit) ----------------
+def tl(when, what):
+    return f'<li><b>{when}</b><span>{what}</span></li>'
+fut_tl = ''.join(tl(a, b) for a, b in [
+ ("1911", "Detroit's contagious-disease hospital on Hamilton Avenue is named for Dr. Herman Kiefer at his son's request."),
+ ("1928", "The main Albert Kahn hospital building opens on the campus."),
+ ("2013", "The city closes the Herman Kiefer Health Complex; the buildings stand empty."),
+ ("Mar 2014", "The City of Detroit asks developers for proposals."),
+ ("2015", "City Council approves a land deal with developer Ron Castellano's Herman Kiefer Development (HKD)."),
+ ("Feb 2018", "HKD buys the campus and two nearby school buildings for $925,000."),
+ ("May 2019", "HKD acquires 21 neighborhood houses, the first of more than 100 planned rehabs."),
+ ("Sep 2020", "Colliers begins marketing the campus as the Creative Commerce Campus Detroit."),
+ ("Jun 2021", "HKD reports its first 15 neighborhood houses rehabbed."),
+ ("Jan 2025", "The city seeks to take the property and buildings back, saying obligations weren't met."),
+ ("Jun 2025", "HKD files for Chapter 11 bankruptcy protection."),
+ ("Jun 2026", "HKD sues the City of Detroit and the Detroit Land Bank Authority in bankruptcy court. These are the developer's allegations; the case is ongoing."),
+ ("Feb 2029", "The campus development deadline shown on the developer's own timeline."),
+])
+FUT_SRC = [
+ ("Herman Kiefer Development — project background and timeline", "https://www.hermankieferdetroit.com/background"),
+ ("Herman Kiefer Development — meetings and events", "https://www.hermankieferdetroit.com/meeting-events"),
+ ("WXYZ-TV (May 2021): Developer shares vision of the historic Herman Kiefer Hospital and surrounding neighborhood", "https://www.wxyz.com/news/community-connection/developer-shares-vision-of-the-historic-herman-kiefer-hospital-and-surrounding-neighborhood"),
+ ("Crain's Detroit Business (2015): Council OKs land deal for closed Herman Kiefer Health Complex", "https://www.crainsdetroit.com/article/20150929/NEWS01/150929777/detroit-city-council-oks-land-deal-for-closed-herman-kiefer-health/"),
+ ("The Detroit News (Jan 2025): City wants Herman Kiefer property and buildings back", "https://www.detroitnews.com/story/news/local/detroit-city/2025/01/29/showdown-herman-kiefer-detroit-city-wants-property-buildings-back-development-castellano/77494698007/"),
+ ("Crain's Detroit Business (Jun 2025): Herman Kiefer Hospital developer files bankruptcy", "https://www.crainsdetroit.com/real-estate/herman-kiefer-hospital-developer-files-bankruptcy/"),
+ ("Crain's Detroit Business (Jun 2026): Herman Kiefer developer sues city", "https://www.crainsdetroit.com/real-estate/commercial/cdb-herman-kiefer-developer-sues-city-20260612/"),
+ ("Detroit Free Press (Jun 2026): Herman Kiefer Hospital lawsuit", "https://www.freep.com/story/money/business/2026/06/16/herman-kiefer-hospital-detroit-lawsuit/90558918007/"),
+ ("Outlier Media — Detroit Development Tracker: Herman Kiefer Hospital", "https://development-tracker.outliermedia.org/projects/herman-kiefer-hospital-development"),
+ ("Studio Castellano — Herman Kiefer project", "http://www.scnyc.net/herman-kiefer"),
+]
+fut_src = ''.join(f'<li><a href="{u}" target="_blank" rel="noopener">{E(t)}</a></li>' for t, u in FUT_SRC)
+fut = f"""<section class="article-hero dark"><div class="wrap"><span class="eyebrow">Rebuilding Detroit · in Herman's spirit</span><h1>The Future</h1><p class="lede" style="max-width:780px">The hospital that carries Dr. Kiefer's name has stood empty since 2013. Here is the plan to bring the campus and its neighborhood back to life, where things stand today, and what his family hopes for, for our children and our children's children.</p></div></section>
+<section class="section light" style="padding-top:40px"><div class="narrow">
+<figure class="figure"><img src="/img/hospital/aerial-campus.jpg" alt="Aerial view of the Herman Kiefer Hospital campus in Detroit"><figcaption>The Herman Kiefer campus off the Lodge Freeway near Clairmount. Blackburn family collection.</figcaption></figure>
+<div class="prose">
+<h2>The plan</h2>
+<p>In 2015 the City of Detroit chose developer Ron Castellano's Herman Kiefer Development (HKD) to reuse the closed health complex. The company describes it as <b>a 38-acre, 862,000-square-foot campus</b> of about a dozen historic buildings, including the 1928 Albert Kahn hospital, plus the former Hutchins and Crosman school buildings. With new construction, WXYZ reported, the site could hold as much as 2.2 million square feet.</p>
+<p>The vision is a home for job-creating companies, marketed by Colliers International as the <b>Creative Commerce Campus Detroit</b>, alongside the rehab of <b>115 vacant homes</b> in the surrounding Herman Kiefer neighborhood. The developer calls it one of the largest adaptive-reuse and neighborhood revitalization projects in the country, with a total investment that WXYZ reported could top $140 million.</p>
+<h2>The timeline</h2>
+</div>
+<ul class="fut-tl">{fut_tl}</ul>
+<div class="prose nodrop">
+<h2>Where it stands today</h2>
+<p>The campus plan has stalled. In January 2025 the city moved to take the property back. In June 2025 the developer filed for Chapter 11 bankruptcy, and in June 2026 it sued the city and the Detroit Land Bank Authority, claiming the city undermined the project. Those claims haven't been decided; the case is ongoing in federal bankruptcy court, and we update this page as it moves. For the developer's side of the story, see its own site at <a href="https://www.hermankieferdetroit.com/" target="_blank" rel="noopener">hermankieferdetroit.com</a>.</p>
+<h2>The neighborhood</h2>
+<p>The work around the campus is real. HKD reports 95 Land Bank houses boarded up, 5.4 million pounds of debris removed, 40,000 hours of clean-up labor and dozens of homes under construction, by its own crews and by other developers. Neighbors have mixed feelings. Some, like resident Robert Talley, told WXYZ the neighborhood is coming back. Others, like Neighborhood Advisory Council member Renee Gunn, say residents felt shut out because houses and empty lots weren't offered to the people who already live there.</p>
+<p>Any future for the campus has to work for the families on Taylor, Blaine, Clairmount and West Philadelphia. They have lived alongside these buildings for generations.</p>
+<h2>Jobs and training</h2>
+<p>The project has partnered with Detroit at Work and the Emerging Industries Training Institute (EITI) on free training for Detroit residents in carpentry, asbestos abatement and demolition work. To ask about current programs, contact <a href="https://detroitatwork.com" target="_blank" rel="noopener">Detroit at Work</a>.</p>
+<h2>What the Kiefer family hopes for</h2>
+<blockquote class="quote" style="font-size:22px">My great-great-great-grandfather came to Detroit with almost nothing and spent sixty years taking care of its people. His son made sure the city's hospital carried his name. Whatever comes next for that campus, I hope it does what he did: put Detroiters first, create good work, and give the families of this neighborhood a real stake in it. Do right and fear no one.<cite>James Joseph Blackburn, Dr. Kiefer's great-great-great-grandson</cite></blockquote>
+<p>We're following the campus and the neighborhood as part of <b>Rebuilding Detroit</b>. If you live nearby, worked or were born at Herman Kiefer, or are part of the redevelopment, we'd love to hear from you. <a href="/about">Write to Jim</a>.</p>
+<h2>Sources</h2>
+<ul>{fut_src}</ul>
+<p>More links: <a href="/herman-kiefer-resources">Herman Kiefer Resources</a> · The hospital's history: <a href="/hospital">The Hospital, 1911 to today</a></p>
+</div></div></section>"""
+fut_ld = [{"@context": "https://schema.org", "@type": "Article", "headline": "The Future of the Herman Kiefer Hospital Campus in Detroit", "author": {"@type": "Person", "name": "James Joseph Blackburn"},
+           "about": {"@type": "Place", "name": "Herman Kiefer Hospital", "address": "1151 Taylor St, Detroit, MI 48202"}, "url": SITE + "/the-future", "dateModified": TODAY}]
+add('the-future', 'The Future of Herman Kiefer Hospital: Redevelopment Plan, Timeline & Latest News | Rebuilding Detroit',
+    'What is happening to Detroit\'s Herman Kiefer Hospital? The 38-acre redevelopment plan, the 115-home neighborhood rehab, the bankruptcy and lawsuit, and what the Kiefer family hopes for.',
+    fut, '/the-future', fut_ld, '/img/hospital/aerial-campus.jpg')
+
 # ---------------- HEIRLOOMS ----------------
 HEIR = [
  ("Napoleon's gold snuff box", "Said to be a gift from Napoleon to the Elector of Baden, passed to Dr. Ludwig Kiefer.", "1951 — with Edgar W. Kiefer, Port Huron"),
@@ -591,6 +653,7 @@ RES = [
    ("Herman Kiefer documentary — official teaser", "https://www.youtube.com/watch?v=YEc98QyJnw8", "The 50-second teaser."),
    ("The Family Architect: Richard H. Marr", "https://www.youtube.com/watch?v=adeSKEcxsaU", "Dr. Kiefer's grandson-in-law and the Detroit buildings he designed."),
    ("Herman Kiefer Detroit — YouTube playlist of every Herman Kiefer video (26 videos)", "https://www.youtube.com/playlist?list=PLbRk1QkWpUe4", "News reports, drone footage, neighborhood tours and short films about Herman Kiefer Hospital, all in one playlist."),
+   ("WXYZ-TV article (2021): Developer shares vision of the historic Herman Kiefer Hospital and surrounding neighborhood", "https://www.wxyz.com/news/community-connection/developer-shares-vision-of-the-historic-herman-kiefer-hospital-and-surrounding-neighborhood", "The written story: 38 acres, $140M plan, and neighbors' views."),
    ("WXYZ-TV (2021): developer shares his vision for Herman Kiefer Hospital", "https://www.youtube.com/watch?v=K2vRD37ZGIE", "Rooftop tour of the campus."),
    ("WXYZ-TV (2014): City of Detroit takes bids on the Herman Kiefer complex", "https://www.youtube.com/watch?v=reyZHwMVg-k", "The city tours bidders after the 2013 closure."),
    ("Detroit City Council presentation on the Herman Kiefer development", "https://www.youtube.com/watch?v=jSayJE7cleE", "City planning staff present the redevelopment, c. 2016."),
