@@ -14,6 +14,13 @@ def film_embed(title, start=0, vid=None):
     return (f'<div class="yt"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{vid or FILM_ID}{st}" title="{title}" '
             'allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
 
+def video_ld(vid, name, desc, page_url):
+    return {"@context": "https://schema.org", "@type": "VideoObject", "name": name, "description": desc,
+            "thumbnailUrl": [f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"], "uploadDate": "2026-10-21T00:00:00-04:00",
+            "embedUrl": f"https://www.youtube.com/embed/{vid}", "contentUrl": f"https://www.youtube.com/watch?v={vid}",
+            "url": page_url, "publisher": {"@type": "Organization", "name": "StoryHouse Records LLC"},
+            "creator": {"@type": "Person", "name": "James Joseph Blackburn"}}
+
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 SITE = 'https://hermankiefer.com'
 TODAY = datetime.date.today().isoformat()
@@ -262,7 +269,8 @@ for i, c in enumerate(CHAPTERS):
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
               {"@type": "ListItem", "position": 2, "name": "The Story", "item": SITE + "/story"},
-              {"@type": "ListItem", "position": 3, "name": c['title'], "item": f"{SITE}/story/{c['slug']}"}]}]
+              {"@type": "ListItem", "position": 3, "name": c['title'], "item": f"{SITE}/story/{c['slug']}"}]},
+          video_ld(EP_IDS[i], f"Herman Kiefer, Ep. {i+1}: {c['title']} | Kiefer: Do Right and Fear No One", c['teaser'], f"{SITE}/story/{c['slug']}")]
     add(f"story/{c['slug']}", f"{c['title']} — Chapter {i+1} | The Herman Kiefer Story", f"{c['teaser']} {strip(c['body'])[:120]}…", body, '/story', ld, '/img/' + c['img'])
 
 
@@ -310,7 +318,7 @@ watch = f'''<section class="article-hero dark"><div class="wrap"><span class="ey
 <div class="grid g2" style="margin-top:24px">
 {''.join(f'<div><div class="yt"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{v}" title="{E(t)}" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p class="muted" style="font-size:15px;margin-top:8px">{E(t)}</p></div>' for v, t in [("K2vRD37ZGIE", "WXYZ-TV, May 2021: the developer shares his vision for the hospital campus"), ("reyZHwMVg-k", "WXYZ-TV, March 2014: the City of Detroit takes bids on the Herman Kiefer complex"), ("jSayJE7cleE", "Detroit City Council presentation on the redevelopment, c. 2016"), ("elL0_IKjcmw", "College for Creative Studies: students make art inside the empty hospital")])}
 </div></div></section>'''
-add('watch', 'Watch: Kiefer — Do Right and Fear No One (Documentary) | HermanKiefer.com', 'The documentary series about Dr. Herman Kiefer and his family, plus news coverage of Detroit\'s Herman Kiefer Hospital.', watch, '/watch')
+add('watch', 'Watch: Kiefer — Do Right and Fear No One (Documentary) | HermanKiefer.com', 'The documentary series about Dr. Herman Kiefer and his family, plus news coverage of Detroit\'s Herman Kiefer Hospital.', watch, '/watch', [video_ld(FILM_ID, "Kiefer: Do Right and Fear No One | The True Story Behind Detroit's Herman Kiefer Hospital", "The true story of Dr. Herman Kiefer (1825-1911), the 1848 revolutionary who became Detroit's beloved doctor, and the family behind Detroit's Herman Kiefer Hospital. Written and narrated by his great-great-great-grandson James Joseph Blackburn.", SITE + "/watch"), video_ld(TEASER_ID, "Herman Kiefer Documentary | Do Right and Fear No One (Official Teaser)", "50-second teaser for the Herman Kiefer documentary.", SITE + "/watch")])
 
 # ---------------- FAMILY ----------------
 fam = f'''<section class="article-hero dark"><div class="wrap"><span class="eyebrow">Herman & Frances Kiefer's children</span><h1>The Family</h1><p class="lede" style="max-width:760px">Nine children were born between 1851 and 1867. Emila Anna, Richard Faust and Oscar Hutton died young and lie at Elmwood Cemetery. The other six went out into the world.</p></div></section>
