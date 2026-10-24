@@ -14,12 +14,20 @@ def film_embed(title, start=0, vid=None):
     return (f'<div class="yt"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{vid or FILM_ID}{st}" title="{title}" '
             'allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
 
-def video_ld(vid, name, desc, page_url):
-    return {"@context": "https://schema.org", "@type": "VideoObject", "name": name, "description": desc,
-            "thumbnailUrl": [f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"], "uploadDate": "2026-10-21T00:00:00-04:00",
-            "embedUrl": f"https://www.youtube.com/embed/{vid}", "contentUrl": f"https://www.youtube.com/watch?v={vid}",
-            "url": page_url, "publisher": {"@type": "Organization", "name": "StoryHouse Records LLC", "url": "https://storyhouserecords.com"},
-            "creator": {"@type": "Person", "name": "James Joseph Blackburn", "url": SITE + "/about"}}
+EP_DUR = [69.2, 63.44, 72.16, 61.04, 63.9, 65.88, 62.24, 60.48, 69.25, 73.8, 67.85, 69.77, 62.84, 62.52, 54.0, 62.41, 64.06, 63.88, 65.48, 64.29]
+FILM_DUR, TEASER_DUR, MARR_DUR = 1295.9, 50.2, 102.0
+def iso_dur(sec):
+    sec = int(round(sec)); return f"PT{sec // 60}M{sec % 60}S"
+def video_ld(vid, name, desc, page_url, dur=None, clips=None):
+    d = {"@context": "https://schema.org", "@type": "VideoObject", "name": name, "description": desc,
+         "thumbnailUrl": [f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"], "uploadDate": "2026-10-21T00:00:00-04:00",
+         "embedUrl": f"https://www.youtube.com/embed/{vid}", "url": page_url,
+         "publisher": {"@type": "Organization", "name": "StoryHouse Records LLC", "url": "https://storyhouserecords.com"},
+         "creator": {"@type": "Person", "name": "James Joseph Blackburn", "url": SITE + "/about"}}
+    if dur: d["duration"] = iso_dur(dur)
+    if clips:
+        d["hasPart"] = [{"@type": "Clip", "name": n, "startOffset": a, "endOffset": b, "url": f"https://www.youtube.com/watch?v={vid}&t={a}"} for n, a, b in clips]
+    return d
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 SITE = 'https://hermankiefer.com'
@@ -270,7 +278,7 @@ for i, c in enumerate(CHAPTERS):
               {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
               {"@type": "ListItem", "position": 2, "name": "The Story", "item": SITE + "/story"},
               {"@type": "ListItem", "position": 3, "name": c['title'], "item": f"{SITE}/story/{c['slug']}"}]},
-          video_ld(EP_IDS[i], f"Herman Kiefer, Ep. {i+1}: {c['title']} | Kiefer: Do Right and Fear No One", c['teaser'], f"{SITE}/story/{c['slug']}")]
+          video_ld(EP_IDS[i], f"Herman Kiefer, Ep. {i+1}: {c['title']} | Kiefer: Do Right and Fear No One", c['teaser'], f"{SITE}/story/{c['slug']}", EP_DUR[i])]
     add(f"story/{c['slug']}", f"{c['title']} — Chapter {i+1} | The Herman Kiefer Story", f"{c['teaser']} {strip(c['body'])[:120]}…", body, '/story', ld, '/img/' + c['img'])
 
 
@@ -306,7 +314,7 @@ marr_body = f"""<section class="article-hero dark"><div class="narrow"><span cla
 marr_ld = [{"@context": "https://schema.org", "@type": "Person", "name": "Richard Henderson Marr", "birthDate": "1886-08-24", "deathDate": "1946-04-23",
             "birthPlace": "Detroit, Michigan", "jobTitle": "Architect", "spouse": {"@type": "Person", "name": "Irma Rose Bonning Marr"},
             "url": SITE + "/richard-marr"}]
-add('richard-marr', 'Richard H. Marr, Detroit Architect (1886–1946): The Kiefer Building and 53 Buildings', 'Richard H. Marr designed the Kiefer Building, Fisher mansions in Palmer Woods and more than fifty Michigan buildings. He married Dr. Herman Kiefer\'s granddaughter Irma Bonning. Full list with addresses.', marr_body, '/story', marr_ld, '/img/history/kiefer-building-1911.jpg')
+add('richard-marr', 'Richard H. Marr, Detroit Architect (1886–1946): The Kiefer Building and 53 Buildings', 'Richard H. Marr designed the Kiefer Building, Fisher mansions in Palmer Woods and more than fifty Michigan buildings. He married Dr. Herman Kiefer\'s granddaughter Irma Bonning. Full list with addresses.', marr_body, '/story', marr_ld + [video_ld(MARR_ID, "The Family Architect: Richard H. Marr, the Architect Who Built Detroit's Finest Homes", "Richard H. Marr (1886-1946) married Dr. Herman Kiefer's granddaughter Irma Bonning and designed more than fifty Detroit buildings, from the Kiefer Building to Fisher mansions in Palmer Woods.", SITE + "/richard-marr", MARR_DUR)], '/img/history/kiefer-building-1911.jpg')
 
 # ---------------- WATCH ----------------
 watch = f'''<section class="article-hero dark"><div class="wrap"><span class="eyebrow">The documentary</span><h1>Watch</h1><p class="lede" style="max-width:760px"><em>Kiefer: Do Right and Fear No One</em> — written, produced and narrated by James Joseph Blackburn, Dr. Kiefer's great-great-great-grandson. Twenty short episodes in one 21-minute film.</p></div></section>
@@ -318,7 +326,7 @@ watch = f'''<section class="article-hero dark"><div class="wrap"><span class="ey
 <div class="grid g2" style="margin-top:24px">
 {''.join(f'<div><div class="yt"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{v}" title="{E(t)}" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p class="muted" style="font-size:15px;margin-top:8px">{E(t)}</p></div>' for v, t in [("K2vRD37ZGIE", "WXYZ-TV, May 2021: the developer shares his vision for the hospital campus"), ("reyZHwMVg-k", "WXYZ-TV, March 2014: the City of Detroit takes bids on the Herman Kiefer complex"), ("jSayJE7cleE", "Detroit City Council presentation on the redevelopment, c. 2016"), ("elL0_IKjcmw", "College for Creative Studies: students make art inside the empty hospital")])}
 </div></div></section>'''
-add('watch', 'Watch: Kiefer — Do Right and Fear No One (Documentary) | HermanKiefer.com', 'The documentary series about Dr. Herman Kiefer and his family, plus news coverage of Detroit\'s Herman Kiefer Hospital.', watch, '/watch', [video_ld(FILM_ID, "Kiefer: Do Right and Fear No One | The True Story Behind Detroit's Herman Kiefer Hospital", "The true story of Dr. Herman Kiefer (1825-1911), the 1848 revolutionary who became Detroit's beloved doctor, and the family behind Detroit's Herman Kiefer Hospital. Written and narrated by his great-great-great-grandson James Joseph Blackburn.", SITE + "/watch"), video_ld(TEASER_ID, "Herman Kiefer Documentary | Do Right and Fear No One (Official Teaser)", "50-second teaser for the Herman Kiefer documentary.", SITE + "/watch")])
+add('watch', 'Watch: Kiefer — Do Right and Fear No One (Documentary) | HermanKiefer.com', 'The documentary series about Dr. Herman Kiefer and his family, plus news coverage of Detroit\'s Herman Kiefer Hospital.', watch, '/watch', [video_ld(FILM_ID, "Kiefer: Do Right and Fear No One | The True Story Behind Detroit's Herman Kiefer Hospital", "The true story of Dr. Herman Kiefer (1825-1911), the 1848 revolutionary who became Detroit's beloved doctor, and the family behind Detroit's Herman Kiefer Hospital. Written and narrated by his great-great-great-grandson James Joseph Blackburn.", SITE + "/watch", FILM_DUR, [(f"Chapter {k+1}: {CHAPTERS[k]['title']}", CH_START[k], (CH_START[k+1] if k + 1 < len(CH_START) else 1250)) for k in range(len(CH_START))]), video_ld(TEASER_ID, "Herman Kiefer Documentary | Do Right and Fear No One (Official Teaser)", "50-second teaser for the Herman Kiefer documentary.", SITE + "/watch", TEASER_DUR)])
 
 # ---------------- FAMILY ----------------
 fam = f'''<section class="article-hero dark"><div class="wrap"><span class="eyebrow">Herman & Frances Kiefer's children</span><h1>The Family</h1><p class="lede" style="max-width:760px">Nine children were born between 1851 and 1867. Emila Anna, Richard Faust and Oscar Hutton died young and lie at Elmwood Cemetery. The other six went out into the world.</p></div></section>
