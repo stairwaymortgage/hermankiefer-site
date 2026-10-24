@@ -18,8 +18,8 @@ def video_ld(vid, name, desc, page_url):
     return {"@context": "https://schema.org", "@type": "VideoObject", "name": name, "description": desc,
             "thumbnailUrl": [f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"], "uploadDate": "2026-10-21T00:00:00-04:00",
             "embedUrl": f"https://www.youtube.com/embed/{vid}", "contentUrl": f"https://www.youtube.com/watch?v={vid}",
-            "url": page_url, "publisher": {"@type": "Organization", "name": "StoryHouse Records LLC"},
-            "creator": {"@type": "Person", "name": "James Joseph Blackburn"}}
+            "url": page_url, "publisher": {"@type": "Organization", "name": "StoryHouse Records LLC", "url": "https://storyhouserecords.com"},
+            "creator": {"@type": "Person", "name": "James Joseph Blackburn", "url": SITE + "/about"}}
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 SITE = 'https://hermankiefer.com'
